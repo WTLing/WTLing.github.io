@@ -16,21 +16,22 @@
   <meta name="description" content="">
   <meta name="author" content="ZTDXMC">
   <meta name="keywords" content="">
-  <meta name="description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+  <meta name="description" content="B树和B+树的区别在于： B树的非叶子结点包含实际的值，而B+树的非叶子结点只包含索引信息，所有数据都存放在叶子结点上  由于B+树在内部节点上不含数据信息，因此在内存页中能够存放更多的key。根据数据的空间局部性原则，数据具有更好的缓存命中率  B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工具们">
-<meta property="og:url" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/index.html">
+<meta property="og:title" content="B &amp; B+ 树">
+<meta property="og:url" content="http://example.com/2021/07/20/B-B-%E6%A0%91/index.html">
 <meta property="og:site_name" content="Tony的窝点">
-<meta property="og:description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+<meta property="og:description" content="B树和B+树的区别在于： B树的非叶子结点包含实际的值，而B+树的非叶子结点只包含索引信息，所有数据都存放在叶子结点上  由于B+树在内部节点上不含数据信息，因此在内存页中能够存放更多的key。根据数据的空间局部性原则，数据具有更好的缓存命中率  B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
-<meta property="article:published_time" content="2021-11-17T01:48:53.000Z">
-<meta property="article:modified_time" content="2021-11-23T16:37:47.613Z">
+<meta property="og:image" content="http://example.com/2021/07/20/B-B-%E6%A0%91/1.png">
+<meta property="og:image" content="http://example.com/2021/07/20/B-B-%E6%A0%91/2.png">
+<meta property="article:published_time" content="2021-07-20T14:10:52.000Z">
+<meta property="article:modified_time" content="2021-11-23T15:59:58.753Z">
 <meta property="article:author" content="ZTDXMC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
+<meta name="twitter:image" content="http://example.com/2021/07/20/B-B-%E6%A0%91/1.png">
   
-  <title>工具们 - Tony的窝点</title>
+  <title>B &amp; B+ 树 - Tony的窝点</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -168,7 +169,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="工具们">
+            <span class="h2" id="subtitle" title="B &amp; B+ 树">
               
             </span>
 
@@ -178,8 +179,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-17 09:48" pubdate>
-        2021年11月17日 上午
+      <time datetime="2021-07-20 22:10" pubdate>
+        2021年7月20日 晚上
       </time>
     </span>
   
@@ -189,7 +190,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      493 字
+      1.3k 字
     </span>
   
 
@@ -198,7 +199,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      4 分钟
     </span>
   
 
@@ -227,37 +228,51 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">工具们</h1>
+            <h1 style="display: none">B &amp; B+ 树</h1>
             
             <div class="markdown-body">
-              <h4 id="下载工具-https-www-motrix-app-zh-CN"><a href="#下载工具-https-www-motrix-app-zh-CN" class="headerlink" title="下载工具:https://www.motrix.app/zh-CN/"></a><strong>下载工具</strong>:<a target="_blank" rel="noopener" href="https://www.motrix.app/zh-CN/">https://www.motrix.app/zh-CN/</a></h4><h4 id="视频素材管理工具：https-www-ysjf-com-gate"><a href="#视频素材管理工具：https-www-ysjf-com-gate" class="headerlink" title="视频素材管理工具：https://www.ysjf.com/gate"></a><strong>视频素材管理工具</strong>：<a target="_blank" rel="noopener" href="https://www.ysjf.com/gate">https://www.ysjf.com/gate</a></h4><h4 id="数学公式ORC识别-Mathpix-Snip：https-mathpix-com"><a href="#数学公式ORC识别-Mathpix-Snip：https-mathpix-com" class="headerlink" title="数学公式ORC识别 Mathpix Snip：https://mathpix.com"></a><strong>数学公式ORC识别 Mathpix Snip</strong>：<a target="_blank" rel="noopener" href="https://mathpix.com/">https://mathpix.com</a></h4><h4 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a><strong>安装brew</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">/bin/zsh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span><br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a><strong>安装node</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">brew install node<br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo<br></code></pre></div></td></tr></table></figure>
-
-<p>初始化hexo目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> blog<br>hexo init<br></code></pre></div></td></tr></table></figure>
-
-<p>显示数学公式</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo-filter-mathjax<br>hexo clean<br></code></pre></div></td></tr></table></figure>
-
-<p>显示图片</p>
+              <h3 id="B树和B-树的区别在于："><a href="#B树和B-树的区别在于：" class="headerlink" title="B树和B+树的区别在于："></a>B树和B+树的区别在于：</h3><ul>
+<li><p>B树的非叶子结点包含实际的值，而B+树的非叶子结点只包含索引信息，所有数据都存放在叶子结点上</p>
+</li>
+<li><p>由于B+树在内部节点上不含数据信息，因此在内存页中能够存放更多的key。根据数据的空间局部性原则，数据具有更好的缓存命中率</p>
+</li>
+<li><p>B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一层的递归遍历。相邻的元素可能在内存中不相邻，所以缓存命中性没有B+树好。</p>
+</li>
+<li><p>B树其优点在于，由于B树的每一个节点都包含key和value，访问一些离根结点近的元素更快</p>
+<p><img src="/2021/07/20/B-B-%E6%A0%91/1.png" srcset="/img/loading.gif" lazyload></p>
+</li>
+</ul>
+<hr>
+<h3 id="B树B-树对于存储的作用"><a href="#B树B-树对于存储的作用" class="headerlink" title="B树B+树对于存储的作用"></a>B树B+树对于存储的作用</h3><p>数据库系统普遍采用B-/+Tree作为<strong>索引结构</strong></p>
+<p>对磁盘的访问时间分为 <strong>寻道时间</strong>，<strong>旋转时间</strong>，以及<strong>传送时间</strong></p>
+<p><img src="/2021/07/20/B-B-%E6%A0%91/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I/O操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数</p>
+<p>由于磁盘的物理特性就决定了其访问速度的限制，因此为了提高效率必须减少磁盘I/O。为了达到这个目的，磁盘往往不是严格的按需读取，而是会预读，即使只需要一个字节，也会一次读入一个块放入内存。这样做基于一个原理：</p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></p>
+<p>局部性原理：当一个数据被用到时，其附近的数据也通常会马上被使用。</p>
 </blockquote>
-<h4 id="Npx搭建静态服务器局域网传数据"><a href="#Npx搭建静态服务器局域网传数据" class="headerlink" title="Npx搭建静态服务器局域网传数据"></a>Npx搭建静态服务器局域网传数据</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 指定文件夹下<br>npx http-server<br></code></pre></div></td></tr></table></figure>
-
-<p>打开弹出的网址后，找到指定文件下载就好</p>
-<img src="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
-
-<h4 id="MAC添加全局变量"><a href="#MAC添加全局变量" class="headerlink" title="MAC添加全局变量"></a>MAC添加全局变量</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo vi /etc/paths <br><span class="hljs-built_in">source</span> ~/.bash_profile 生效<br></code></pre></div></td></tr></table></figure>
-
+<p><strong>程序运行期间需要的数据往往比较集中</strong></p>
+<p>预读的长度一般为页（page）的整倍数。页是计算机管理存储器的逻辑块，硬件及操作系统往往将主存和磁盘存储区分割为连续的大小相等的块，每个存储块称为一页（在许多操作系统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p>
+<h3 id="红黑树与B树"><a href="#红黑树与B树" class="headerlink" title="红黑树与B树"></a>红黑树与B树</h3><p><strong>为什么文件系统的索引喜欢B树而不用红黑树或者有序数组呢？</strong></p>
+<p>文件系统和数据库的索引都是存在硬盘上的，并且如果数据量大的话，不一定能一次性加载到内存中。那么如果树都不能加载到内存中就无法查找。</p>
+<p>而B树，每次加载树的一个结点，然后一步步往下找。</p>
+<p>在内存中红黑树的效率高，但是在磁盘中B树就更优了</p>
+<h3 id="为什么Mysql用B-树："><a href="#为什么Mysql用B-树：" class="headerlink" title="为什么Mysql用B+树："></a>为什么Mysql用B+树：</h3><p>​    B+树是在B树上的改造，它的数据都在叶子结点，同时叶子结点之间还加入了指针形成链表</p>
+<p>​    而因为实际业务中一次不是只查一条记录，而是多条，如果使用B树的话，查找相邻的两个元素，可能要进行中序排序，跨层访问。而B+树所有数据都在叶子结点不需要跨层，且同时有链表结构，只需要从头找到尾，通过链表就能把所有数据取出来了</p>
+<h3 id="Hash比B-树还快，为啥不用Hash"><a href="#Hash比B-树还快，为啥不用Hash" class="headerlink" title="Hash比B+树还快，为啥不用Hash"></a>Hash比B+树还快，为啥不用Hash</h3><p>1、这跟实际的业务场景有关，一般实际的业务场景不会只查找一条数据。一条数据确实Hash块，但是多条的话，由于B+树之间索引有序，并且有链表相连，它的查找效率就比Hash快很多了</p>
+<p>2、而且数据库中的索引一般是在磁盘上，数据量大的情况可能无法一次装入内存，B+ 树的设计可以允许数据分批加载，同时树的高度较低，提高查找效率</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Data-Structure/">Data Structure</a>
+                    
+                  </div>
                 
                 
               </div>
@@ -267,9 +282,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/22/%E8%BE%BE%E8%8A%AC%E5%A5%87/">
+                      <a href="/2021/08/23/conda%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">达芬奇</span>
+                        <span class="hidden-mobile">conda常见命令</span>
                         <span class="visible-mobile">Pre</span>
                       </a>
                     
@@ -277,8 +292,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/12/Pytorch-Tips/">
-                        <span class="hidden-mobile">Pytorch Tips</span>
+                      <a href="/2021/07/12/Trie%E6%A0%91/">
+                        <span class="hidden-mobile">Trie树</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

@@ -16,21 +16,31 @@
   <meta name="description" content="">
   <meta name="author" content="ZTDXMC">
   <meta name="keywords" content="">
-  <meta name="description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+  <meta name="description" content="Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串 通过共享前缀空间来节约存储空间 性质 根节点不包含字符，除根节点意外每个节点只包含一个字符 从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串 每个节点的所有子节点包含的字符串不相同    红色的结点为结束标记，表示ab也是存储的一个串。 应用​    最大的特点就是利用了字符串的公共前缀，像go">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工具们">
-<meta property="og:url" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/index.html">
+<meta property="og:title" content="Trie树">
+<meta property="og:url" content="http://example.com/2021/07/12/Trie%E6%A0%91/index.html">
 <meta property="og:site_name" content="Tony的窝点">
-<meta property="og:description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+<meta property="og:description" content="Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串 通过共享前缀空间来节约存储空间 性质 根节点不包含字符，除根节点意外每个节点只包含一个字符 从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串 每个节点的所有子节点包含的字符串不相同    红色的结点为结束标记，表示ab也是存储的一个串。 应用​    最大的特点就是利用了字符串的公共前缀，像go">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
-<meta property="article:published_time" content="2021-11-17T01:48:53.000Z">
-<meta property="article:modified_time" content="2021-11-23T16:37:47.613Z">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/1.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/2.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/3.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/4.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/5.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/4.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/5.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/6.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/7.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/8.png">
+<meta property="og:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/9.png">
+<meta property="article:published_time" content="2021-07-12T14:13:05.000Z">
+<meta property="article:modified_time" content="2021-11-23T16:00:12.504Z">
 <meta property="article:author" content="ZTDXMC">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
+<meta name="twitter:image" content="http://example.com/2021/07/12/Trie%E6%A0%91/1.png">
   
-  <title>工具们 - Tony的窝点</title>
+  <title>Trie树 - Tony的窝点</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -168,7 +178,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="工具们">
+            <span class="h2" id="subtitle" title="Trie树">
               
             </span>
 
@@ -178,8 +188,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-17 09:48" pubdate>
-        2021年11月17日 上午
+      <time datetime="2021-07-12 22:13" pubdate>
+        2021年7月12日 晚上
       </time>
     </span>
   
@@ -189,7 +199,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      493 字
+      1.1k 字
     </span>
   
 
@@ -198,7 +208,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      3 分钟
     </span>
   
 
@@ -227,37 +237,60 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">工具们</h1>
+            <h1 style="display: none">Trie树</h1>
             
             <div class="markdown-body">
-              <h4 id="下载工具-https-www-motrix-app-zh-CN"><a href="#下载工具-https-www-motrix-app-zh-CN" class="headerlink" title="下载工具:https://www.motrix.app/zh-CN/"></a><strong>下载工具</strong>:<a target="_blank" rel="noopener" href="https://www.motrix.app/zh-CN/">https://www.motrix.app/zh-CN/</a></h4><h4 id="视频素材管理工具：https-www-ysjf-com-gate"><a href="#视频素材管理工具：https-www-ysjf-com-gate" class="headerlink" title="视频素材管理工具：https://www.ysjf.com/gate"></a><strong>视频素材管理工具</strong>：<a target="_blank" rel="noopener" href="https://www.ysjf.com/gate">https://www.ysjf.com/gate</a></h4><h4 id="数学公式ORC识别-Mathpix-Snip：https-mathpix-com"><a href="#数学公式ORC识别-Mathpix-Snip：https-mathpix-com" class="headerlink" title="数学公式ORC识别 Mathpix Snip：https://mathpix.com"></a><strong>数学公式ORC识别 Mathpix Snip</strong>：<a target="_blank" rel="noopener" href="https://mathpix.com/">https://mathpix.com</a></h4><h4 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a><strong>安装brew</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">/bin/zsh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span><br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a><strong>安装node</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">brew install node<br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo<br></code></pre></div></td></tr></table></figure>
-
-<p>初始化hexo目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> blog<br>hexo init<br></code></pre></div></td></tr></table></figure>
-
-<p>显示数学公式</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo-filter-mathjax<br>hexo clean<br></code></pre></div></td></tr></table></figure>
-
-<p>显示图片</p>
-<blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></p>
-</blockquote>
-<h4 id="Npx搭建静态服务器局域网传数据"><a href="#Npx搭建静态服务器局域网传数据" class="headerlink" title="Npx搭建静态服务器局域网传数据"></a>Npx搭建静态服务器局域网传数据</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 指定文件夹下<br>npx http-server<br></code></pre></div></td></tr></table></figure>
-
-<p>打开弹出的网址后，找到指定文件下载就好</p>
-<img src="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
-
-<h4 id="MAC添加全局变量"><a href="#MAC添加全局变量" class="headerlink" title="MAC添加全局变量"></a>MAC添加全局变量</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo vi /etc/paths <br><span class="hljs-built_in">source</span> ~/.bash_profile 生效<br></code></pre></div></td></tr></table></figure>
-
+              <p>Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串</p>
+<p>通过共享前缀空间来节约存储空间</p>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a><strong>性质</strong></h3><ul>
+<li>根节点不包含字符，除根节点意外每个节点只包含一个字符</li>
+<li>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串</li>
+<li>每个节点的所有子节点包含的字符串不相同</li>
+</ul>
+<hr>
+<p><img src="/2021/07/12/Trie%E6%A0%91/1.png" srcset="/img/loading.gif" lazyload></p>
+<p>红色的结点为结束标记，表示ab也是存储的一个串。</p>
+<h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a><strong>应用</strong></h3><p>​    最大的特点就是利用了字符串的公共前缀，像google、baidu搜索词条的时候，推荐相关信息</p>
+<p>​    Trie树实现敏感词过滤：</p>
+<p>1、先把你给我的三个敏感词：“de”, “bca”, “bcf” 建立一颗 trie 树</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/2.png" srcset="/img/loading.gif" lazyload></p>
+<p>2、接着我们可以采用三个指针来遍历</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后从字符串的 a 开始，检测有没有以 a 作为前缀的敏感词，直接判断 p1 的孩子节点中是否有 a 这个节点就可以了，显然这里没有。接着把指针 p2 和 p3 向右移动一格</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后从字符串 b 开始查找，看看是否有以 b 作为前缀的字符串，p1 的孩子节点中有 b，这时，<strong>我们把 p1 指向节点 b，p2 向右移动一格，不过，p3不动</strong></p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>判断 p1 的孩子节点中是否存在 p2 指向的字符c，显然有。我们把 p1 指向节点 c，p2 向右移动一格，p3不动。</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>判断 p1 的孩子节点中是否存在 p2 指向的字符d，这里没有。这意味着，<strong>不存在以字符b作为前缀的敏感词</strong>。这时我们把p2和p3都移向字符c，p1 还是还原到最开始指向 root</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/5.png" srcset="/img/loading.gif" lazyload></p>
+<p>和前面的步骤一样，判断有没以 c 作为前缀的字符串，显然这里没有，所以把 p2 和 p3 移到字符 d。</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/6.png" srcset="/img/loading.gif" lazyload></p>
+<p>然后从字符串 d 开始查找，看看是否有以 d 作为前缀的字符串，p1 的孩子节点中有 d，这时，<strong>我们把 p1 指向节点 b，p2 向右移动一格，不过，p3和刚才一样不动</strong></p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/7.png" srcset="/img/loading.gif" lazyload></p>
+<p>判断 p1 的孩子节点中是否存在 p2 指向的字符e，显然有。我们把 p1 指向节点  e，并且，这里e是最后一个节点了，查找结束，所以存在敏感词de，即 p3 和 p2 这个区间指向的就是敏感词了，把 p2 和 p3  指向的区间那些字符替换成 *。并且把 p2 和 p3 移向字符 f</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/8.png" srcset="/img/loading.gif" lazyload></p>
+<p>接着还是重复同样的步骤，知道 p3 指向最后一个字符</p>
+<p><img src="/2021/07/12/Trie%E6%A0%91/9.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
+<h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h3><p>如果敏感词长度为m，则每个敏感词查找为O（m），字符串长度为n，那么需要遍历n遍，为O(m*n)。</p>
+<p>敏感词Trie树建立：如果有t个敏感词，O(t * m)</p>
+<hr>
+<h3 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a><strong>如何实现</strong></h3><p>如果使用C++的话，我会使用unordered_set，一方面，可以自动去重，查找速度快；另一方面每个结点的子结点数目未知。</p>
+<hr>
+<h3 id="与KMP算法的比较"><a href="#与KMP算法的比较" class="headerlink" title="与KMP算法的比较"></a><strong>与KMP算法的比较</strong></h3><p>相比于KMP算法O（t * （m+n）），确实kmp快，但是Trie树一劳永逸，建立之后可以重复使用，而kmp算法要维护next数组，next数组根据敏感词建立，敏感词比较多的时候得不偿失。</p>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Data-Structure/">Data Structure</a>
+                    
+                  </div>
                 
                 
               </div>
@@ -267,9 +300,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/22/%E8%BE%BE%E8%8A%AC%E5%A5%87/">
+                      <a href="/2021/07/20/B-B-%E6%A0%91/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">达芬奇</span>
+                        <span class="hidden-mobile">B & B+ 树</span>
                         <span class="visible-mobile">Pre</span>
                       </a>
                     
@@ -277,8 +310,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/12/Pytorch-Tips/">
-                        <span class="hidden-mobile">Pytorch Tips</span>
+                      <a href="/2021/07/05/lambda/">
+                        <span class="hidden-mobile">lambda</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

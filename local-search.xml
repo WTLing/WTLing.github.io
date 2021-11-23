@@ -4,310 +4,6 @@
   
   
   <entry>
-    <title>Linux命令</title>
-    <link href="/2029/09/20/Linux%E5%91%BD%E4%BB%A4/"/>
-    <url>/2029/09/20/Linux%E5%91%BD%E4%BB%A4/</url>
-    
-    <content type="html"><![CDATA[<h3 id="基本概念及操作"><a href="#基本概念及操作" class="headerlink" title="基本概念及操作"></a>基本概念及操作</h3><p>【Tab】    <strong>补全代码</strong></p><p>touch name    <strong>创建一个名为name的文件</strong></p><p>pwd    <strong>查看当前所在目录</strong></p><p>find    <strong>查找某文件</strong></p><p>【ctrl+c】    <strong>终止程序</strong></p><p>【ctrl+a】    <strong>将光标移到行头</strong></p><p>【ctrl+e】    <strong>将光标移到行末</strong></p><p>【ctrl+k】    <strong>从光标处删除到行末</strong></p><p>man     <strong>查看命令的手册</strong></p><p><strong>通配符的使用</strong></p><p>touch love_{1..10}_shiyanlou.txt     快速生成1-10的对应的十个文件 </p><p>ls *.txt    查找所有txt的文件</p><p>banner    输出图形字符</p><ul><li>sudo apt-get install sysvbanner* </li></ul><h3 id="用户及文件权限管理"><a href="#用户及文件权限管理" class="headerlink" title="用户及文件权限管理"></a>用户及文件权限管理</h3><p>who<strong>命令查看当前用户信息</strong></p><p>su     切换到用户<strong>user</strong></p><p>sudo adduser     <strong>新建一个为user的</strong>用户**</p><p>groups     查看user<strong>所属的用户组</strong></p><p>Sudo usermod -G sudo lilei    <strong>使用户获得sudo</strong></p><p>Sudo deluder lilei —remove-home    <strong>删除用户</strong></p><p>​    —<em>remove-home</em> 参数可以一并将用户的工作目录删除</p><p><img src="/2029/09/20/Linux%E5%91%BD%E4%BB%A4/1.png"></p><p>ls -l    <strong>列出所有文件及其详细</strong></p><p>ls -l     <strong>列出指定文件详细</strong></p><p>sudo chown       <strong>将文件所有者变更</strong></p><p>chmod 777     <strong>改变指定文件的权限</strong></p><h3 id="目录结构及对文件的基本操作"><a href="#目录结构及对文件的基本操作" class="headerlink" title="目录结构及对文件的基本操作"></a>目录结构及对文件的基本操作</h3><p><img src="/2029/09/20/Linux%E5%91%BD%E4%BB%A4/2.png"></p><p>cd -     <strong>返回上一次的目录</strong></p><p>cd ~    <strong>返回当前用户的home</strong></p><p>mkdir mydir    <strong>创建目录</strong></p><p>mkdir -p father/son/grandson    <strong>创建多级目录</strong></p><p>cp 文件 路径    <strong>将文件复制到指定路径下</strong></p><p>cp -r 文件 路径    <strong>递归复制</strong></p><p>rm 文件名    <strong>删除文件</strong></p><p>rm -r family    <strong>删除目录</strong></p><p>rm -f test    <strong>强制删除，针对权限不足的情况</strong></p><p>mv 文件名    目的目录    <strong>移动文件到指定目录下</strong></p><p>mv 旧文件名 新文件名    <strong>重命名</strong></p><p>cat 文件名    <strong>打印文件内容到标准输出</strong></p><p>cat -n passwd    <strong>显示行号</strong></p><p>more/less 文件名    <strong>分页查看文件</strong>    </p><p>file 文件名    <strong>查看文件的类型</strong></p><h3 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h3><p>:q!    <strong>放弃所有改动</strong></p><p>:wq    <strong>保存改动</strong></p><p>i    <strong>在光标钱插入文本</strong></p><p>A    <strong>在一行的最后添加文本</strong></p><p>dw     <strong>可以删除从光标处删除一个词至词的末尾</strong></p><p>d$    <strong>从光标处删除到末尾</strong></p><h3 id="环境变量和文件查找"><a href="#环境变量和文件查找" class="headerlink" title="环境变量和文件查找"></a>环境变量和文件查找</h3><p>/etc/profile    <strong>变量对所有用户生效</strong></p><p>/etc/bashrc     <strong>变量只对当前用户生效</strong></p><p>PATH=$PATH:/home/shiyanlou/mybin    <strong>添加自定义路径</strong></p><p>根据环境使用的Shell，有的是zsh，有的是bash，对应的.zshrc 和 .bashrc</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;PATH=<span class="hljs-variable">$PATH</span>:/home/shiyanlou/mybin&quot;</span> &gt;&gt; .zshrc将路径复制到.zshrc文件中<br>&gt;&gt; 是追加<br>&gt;是覆盖<br></code></pre></div></td></tr></table></figure><p>source .zshrc    <strong>立即生效</strong></p><p>搜索文件：</p><p>where is <strong>简单快速</strong></p><p>locate <strong>快而全</strong> ****</p><p>locate <strong>需要先sudo update</strong></p><p>find /etc -name sources.list     查找etc文件夹下的sources.list在哪</p><p>cmatrix <strong>黑客帝国数字雨</strong></p><h3 id="文件打包和解压缩"><a href="#文件打包和解压缩" class="headerlink" title="文件打包和解压缩"></a>文件打包和解压缩</h3><p>zip -r -9 -q -o shiyanlou.zip /home/shiyanlou/Desktop</p><p>-r <strong>表示递归打包包含子目录的全部内容</strong></p><p>-q <strong>安静模式，不向屏幕输出信息</strong></p><p>-o <strong>表示输出文件</strong></p><p>unzip shiyanlou.zip    <strong>将文件解压到当前文件夹下</strong></p><p>Unzip shiyanlou.zip -d ziptest     <strong>将文件解压到指定文件夹下</strong></p><ul><li>zip：</li><li>打包 ：zip something.zip something （目录请加 -r 参数）</li><li>解包：unzip something.zip</li><li>指定路径：-d 参数</li><li>tar：</li><li>打包：tar -cf something.tar something</li><li>解包：tar -xf something.tar</li><li>指定路径：-C 参数</li></ul><h3 id="文件操作和磁盘管理"><a href="#文件操作和磁盘管理" class="headerlink" title="文件操作和磁盘管理"></a>文件操作和磁盘管理</h3><p>df    查看磁盘容量</p><h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>sudo apt-get install XXX</p><p>sudo apt-get update    更新软件源</p><p>sudo apt-get upgrade    升级没有依赖问题的软件包</p><p>sudo apt-get remove XXX    卸载软件</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>指令速查</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>conda常见命令</title>
-    <link href="/2021/11/23/conda%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"/>
-    <url>/2021/11/23/conda%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</url>
-    
-    <content type="html"><![CDATA[<h2 id="Conda常用命令"><a href="#Conda常用命令" class="headerlink" title="Conda常用命令"></a>Conda常用命令</h2><p>conda list 查看安装了哪些包</p><p>conda env list 查看当前存在哪些虚拟环境</p><h3 id="创建Python环境"><a href="#创建Python环境" class="headerlink" title="创建Python环境"></a>创建Python环境</h3><p>conda create -n name python=X.X</p><h3 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h3><p>source activate name</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Laplacian-Steered Neural Style Transfer</title>
-    <link href="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/"/>
-    <url>/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/</url>
-    
-    <content type="html"><![CDATA[<h2 id="Laplacian-Steered-Neural-Style-Transfer"><a href="#Laplacian-Steered-Neural-Style-Transfer" class="headerlink" title="Laplacian-Steered Neural Style Transfer"></a>Laplacian-Steered Neural Style Transfer</h2><p><strong>传统的风格迁移项目中的问题：</strong>缺少内容图像的低级特征，而风格图像的低级特征主导了新图像的低级细节特征。因此，在合成图像中，图像内容的许多细节丢了，并且出现了很多伪像</p><p><strong>论文解决的问题：</strong>建议使用新的损失函数：*<strong>拉普拉斯损失来指导图像合成*</strong></p><p>介绍：由拉普拉斯算子生成的拉普拉斯矩阵在计算机视觉中广泛用于检测边缘和轮廓。拉普拉斯损失测量内容图像和新图像之间的拉普拉斯差异以及对应的细节结构差异，可以与传统的风格转换约束兼容。通过合并拉普拉斯损失，我们获得了神经样式转换的新优化目标，成为Lapstyle。最小化此目标将产生风格化的图像，该图像可以更好地保留内容图像的细节结构并消除伪影</p><p>拉普拉斯算子提取了一个拉普拉斯矩阵，该矩阵包括图像中对人类感知最为突出的二阶变化。这些二阶变化通常对应于细节结构</p><p><img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/1.png"></p><p><img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/2.png"></p><p>拉普拉斯损失是由两个拉普拉斯矩阵计算绝对平方差而来</p><p>拉普拉斯矩阵是由一个两层的固定的CNN来计算的，该网络由平均池化层和预先指定的卷积层组成 <a href="https://github.com/askerlee/lapstyle">https://github.com/askerlee/lapstyle</a> （源码）</p><p><strong>工作的贡献</strong></p><ul><li>提出了拉普拉斯损失</li><li>拉普拉斯损失是通过一个附加的CNN计算得到的</li><li>可以组合具有不同粒度的多个拉普拉斯损失，以捕获不同比例的图像细节结构</li></ul><hr><p><strong>拉普拉斯操作</strong>就是用<img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/3.png"></p><p>这么个卷积核来进行卷积，平滑的地方数值会小，但是边缘地带会被放大</p><p><strong>拉普拉斯损失</strong><img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/4.png"></p><p><img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/5.png"></p><p>总损失：<img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/6.png"></p><p>*<strong>在计算拉普拉斯损失的时候解决了两个问题：*</strong></p><ul><li><p>多通道上的拉普拉斯：输入的图像往往是RGB三通道，理想情况下，要检测边缘，应单独考虑每个通道，即每个通道与拉普拉斯滤波器卷积，产生三个拉普拉斯矩阵，在三个拉普拉斯矩阵中，任何一个都很大的情况下，表示边缘，无论其符号如何，为此，对于多通道的问题，最终的D 是 三个通道值绝对值之和。</p><p><img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/7.png"></p></li><li><p>通过池化层来平滑拉普拉斯矩阵结果</p></li></ul><p>此外，可以进行多个粒度的拉普拉斯操作，</p><p><img src="/2021/11/23/Laplacian-Steered-Neural-Style-Transfer/8.png"></p><hr><h3 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a>具体实施</h3><p>拉普拉斯滤波器用3*3的固定权重的卷积层</p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Git工具</title>
-    <link href="/2021/11/23/Git%E5%B7%A5%E5%85%B7/"/>
-    <url>/2021/11/23/Git%E5%B7%A5%E5%85%B7/</url>
-    
-    <content type="html"><![CDATA[<figure class="highlight livecodeserver"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs livecodeserver">git init <span class="hljs-comment">//初始化仓库</span><br>git init newrepo<span class="hljs-comment"> //将制定文件夹作为Git仓库</span><br>git <span class="hljs-built_in">add</span> filename<span class="hljs-comment"> //添加文件</span><br>git rm <span class="hljs-built_in">file</span><span class="hljs-comment"> //删除文件</span><br>git commit -m <span class="hljs-string">&quot;Adding files&quot;</span><span class="hljs-comment"> //提交版本</span><br>git commit -<span class="hljs-keyword">a</span> -m <span class="hljs-string">&quot;Changed some files&quot;</span><br><br>git clone ssh://example.com/~/www/project.git<span class="hljs-comment"> //克隆一个库</span><br>git push ssh://example.com/~/www/project.git<span class="hljs-comment"> //推送到服务器</span><br><br>git branch branchName<span class="hljs-comment"> //创建分支</span><br>git branch -d branchName<span class="hljs-comment"> //删除分支</span><br>git checkout branchName<span class="hljs-comment"> //切换分支</span><br>第一个分支叫master<br>git checkout master<br><br>将分支合并到master上<br>git checkout master<br>git <span class="hljs-built_in">merge</span> branchName<br><br>在合并改动之前，你可以使用如下命令预览差异：<br>git diff &lt;source_branch&gt; &lt;target_branch&gt;<br><br>为软件发布创建标签是推荐的。这个概念早已存在，在 SVN 中也有。你可以执行如下命令创建一个叫做 <span class="hljs-number">1.0</span><span class="hljs-number">.0</span> 的标签：<br>git tag <span class="hljs-number">1.0</span><span class="hljs-number">.0</span> <span class="hljs-number">1</span>b2e1d63ff<br><br>git <span class="hljs-built_in">log</span><br>你也可以使用少一点的提交 ID 前几位，只要它的指向具有唯一性。<br><br>假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：<br>git checkout <span class="hljs-comment">-- &lt;filename&gt;</span><br>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。<br><br>假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：<br>git fetch origin<br>git reset <span class="hljs-comment">--hard origin/master </span><br><br>git pull 和 git fetch是有区别的<br>git fetch相当于是从远程获取最新版本到本地，不会自动<span class="hljs-built_in">merge</span><br>git pull相当于是从远程获取最新版本并<span class="hljs-built_in">merge</span>到本地<br><br></code></pre></div></td></tr></table></figure><p>本地仓库由git维护三颗树。第一个是“工作目录”，实际存储的文件；第二个是暂存取（Index），临时保存改动；最后是HEAD，指向最后一次提交的结果</p><h2 id="Git三大特色：分支、暂存取、工作流"><a href="#Git三大特色：分支、暂存取、工作流" class="headerlink" title="Git三大特色：分支、暂存取、工作流"></a>Git三大特色：分支、暂存取、工作流</h2><h3 id="Git分支："><a href="#Git分支：" class="headerlink" title="Git分支："></a>Git分支：</h3><p>​    merge方式：</p><h3 id="Git大概可以分为三个区：工作区-暂存区和版本库"><a href="#Git大概可以分为三个区：工作区-暂存区和版本库" class="headerlink" title="Git大概可以分为三个区：工作区,暂存区和版本库"></a>Git大概可以分为三个区：工作区,暂存区和版本库</h3><ul><li><p>工作区：直接编写代码的地方</p></li><li><p>暂存取：数据暂时存储的区域，连接工作区和版本库</p></li><li><p>版本库：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了</p><p><img src="/2021/11/23/Git%E5%B7%A5%E5%85%B7/1.png"></p></li></ul><p><img src="/2021/11/23/Git%E5%B7%A5%E5%85%B7/2.png"></p><p><img src="/2021/11/23/Git%E5%B7%A5%E5%85%B7/3.png"></p><p>Git 工作流</p><p>​    工作流就是一种工作的方式，目前主流：Git Flow、Github Flow、Gitlab Flow</p><p>​    <strong>Github工作流</strong></p><p>​     GitHub Flow 推荐做法是只有一个主分支 master，团队成员们的分支代码通过 pull Request 来合并到 master 上</p><p>​    特色Pull Request：</p><figure class="highlight asciidoc"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs asciidoc"><span class="hljs-bullet">*    </span>可以很好控制分支合并权限<br><span class="hljs-bullet">*    </span>问题讨论 或者 寻求其他小伙伴们的帮助<br><span class="hljs-bullet">*    </span>代码 Review<br></code></pre></div></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>指令速查</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>lambda</title>
-    <link href="/2021/11/23/lambda/"/>
-    <url>/2021/11/23/lambda/</url>
-    
-    <content type="html"><![CDATA[<p>lambda 表达式有如下的一些优点：</p><figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">声明式的编程风格：就地匿名定义目标函数或函数对象，不需要额外写一个命名函数或函数对象。<br>简洁：避免了代码膨胀和功能分散，让开发更加高效。<br>在需要的时间和地点实现功能闭包，使程序更加灵活。<br></code></pre></div></td></tr></table></figure><p>lambda 表达式定义了一个匿名函数，并且可以捕获一定范围内的变量。lambda 表达式的语法形式简单归纳如下：</p><figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less"><span class="hljs-selector-attr">[capture]</span>(params) <span class="hljs-selector-tag">opt</span> <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">ret</span> &#123;<span class="hljs-selector-tag">body</span>;&#125;;<br></code></pre></div></td></tr></table></figure><p>其中 capture 是捕获列表，params 是参数列表，opt 是函数选项，ret 是返回值类型，body 是函数体。</p><figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less">捕获列表 <span class="hljs-selector-attr">[]</span>: 捕获一定范围内的变量<br><br>参数列表 (): 和普通函数的参数列表一样，如果没有参数参数列表可以省略不写。<br></code></pre></div></td></tr></table></figure><p>在匿名函数内部，需要通过 lambda 表达式的捕获列表控制如何捕获外部变量，以及访问哪些变量。默认状态下 lambda 表达式无法修改通过复制方式捕获外部变量，如果希望修改这些外部变量，需要通过引用的方式进行捕获。</p><p>lambda 表达式的捕获列表可以捕获一定范围内的变量，具体使用方式如下：</p><figure class="highlight angelscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[]</span> - 不捕捉任何变量<br><span class="hljs-string">[&amp;]</span> - 捕获外部作用域中所有变量，并作为引用在函数体内使用 (按引用捕获)<br><span class="hljs-string">[=]</span> - 捕获外部作用域中所有变量，并作为副本在函数体内使用 (按值捕获)<br>    拷贝的副本在匿名函数体内部是只读的<br><span class="hljs-string">[=, &amp;foo]</span> - 按值捕获外部作用域中所有变量，并按照引用捕获外部变量 foo<br><span class="hljs-string">[bar]</span> - 按值捕获 bar 变量，同时不捕获其他变量<br><span class="hljs-string">[&amp;bar]</span> - 按引用捕获 bar 变量，同时不捕获其他变量<br><span class="hljs-string">[this]</span> - 捕获当前类中的 <span class="hljs-keyword">this</span> 指针<br>    让 lambda 表达式拥有和当前类成员函数同样的访问权限<br>    如果已经使用了 &amp; 或者 =, 默认添加此选项<br></code></pre></div></td></tr></table></figure><p>不指定 lambda 表达式的返回值，编译器会根据 return 语句自动推导返回值的类型，但需要注意的是 labmda表达式不能通过列表初始化自动推导出返回值类型。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>C++</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Trie树</title>
-    <link href="/2021/11/23/Trie%E6%A0%91/"/>
-    <url>/2021/11/23/Trie%E6%A0%91/</url>
-    
-    <content type="html"><![CDATA[<p>Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串</p><p>通过共享前缀空间来节约存储空间</p><h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a><strong>性质</strong></h3><ul><li>根节点不包含字符，除根节点意外每个节点只包含一个字符</li><li>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串</li><li>每个节点的所有子节点包含的字符串不相同</li></ul><hr><p><img src="/2021/11/23/Trie%E6%A0%91/1.png"></p><p>红色的结点为结束标记，表示ab也是存储的一个串。</p><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a><strong>应用</strong></h3><p>​    最大的特点就是利用了字符串的公共前缀，像google、baidu搜索词条的时候，推荐相关信息</p><p>​    Trie树实现敏感词过滤：</p><p>1、先把你给我的三个敏感词：“de”, “bca”, “bcf” 建立一颗 trie 树</p><p><img src="/2021/11/23/Trie%E6%A0%91/2.png"></p><p>2、接着我们可以采用三个指针来遍历</p><p><img src="/2021/11/23/Trie%E6%A0%91/3.png"></p><p>然后从字符串的 a 开始，检测有没有以 a 作为前缀的敏感词，直接判断 p1 的孩子节点中是否有 a 这个节点就可以了，显然这里没有。接着把指针 p2 和 p3 向右移动一格</p><p><img src="/2021/11/23/Trie%E6%A0%91/4.png"></p><p>然后从字符串 b 开始查找，看看是否有以 b 作为前缀的字符串，p1 的孩子节点中有 b，这时，<strong>我们把 p1 指向节点 b，p2 向右移动一格，不过，p3不动</strong></p><p><img src="/2021/11/23/Trie%E6%A0%91/5.png"></p><p>判断 p1 的孩子节点中是否存在 p2 指向的字符c，显然有。我们把 p1 指向节点 c，p2 向右移动一格，p3不动。</p><p><img src="/2021/11/23/Trie%E6%A0%91/4.png"></p><p>判断 p1 的孩子节点中是否存在 p2 指向的字符d，这里没有。这意味着，<strong>不存在以字符b作为前缀的敏感词</strong>。这时我们把p2和p3都移向字符c，p1 还是还原到最开始指向 root</p><p><img src="/2021/11/23/Trie%E6%A0%91/5.png"></p><p>和前面的步骤一样，判断有没以 c 作为前缀的字符串，显然这里没有，所以把 p2 和 p3 移到字符 d。</p><p><img src="/2021/11/23/Trie%E6%A0%91/6.png"></p><p>然后从字符串 d 开始查找，看看是否有以 d 作为前缀的字符串，p1 的孩子节点中有 d，这时，<strong>我们把 p1 指向节点 b，p2 向右移动一格，不过，p3和刚才一样不动</strong></p><p><img src="/2021/11/23/Trie%E6%A0%91/7.png"></p><p>判断 p1 的孩子节点中是否存在 p2 指向的字符e，显然有。我们把 p1 指向节点  e，并且，这里e是最后一个节点了，查找结束，所以存在敏感词de，即 p3 和 p2 这个区间指向的就是敏感词了，把 p2 和 p3  指向的区间那些字符替换成 *。并且把 p2 和 p3 移向字符 f</p><p><img src="/2021/11/23/Trie%E6%A0%91/8.png"></p><p>接着还是重复同样的步骤，知道 p3 指向最后一个字符</p><p><img src="/2021/11/23/Trie%E6%A0%91/9.png"></p><hr><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h3><p>如果敏感词长度为m，则每个敏感词查找为O（m），字符串长度为n，那么需要遍历n遍，为O(m*n)。</p><p>敏感词Trie树建立：如果有t个敏感词，O(t * m)</p><hr><h3 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a><strong>如何实现</strong></h3><p>如果使用C++的话，我会使用unordered_set，一方面，可以自动去重，查找速度快；另一方面每个结点的子结点数目未知。</p><hr><h3 id="与KMP算法的比较"><a href="#与KMP算法的比较" class="headerlink" title="与KMP算法的比较"></a><strong>与KMP算法的比较</strong></h3><p>相比于KMP算法O（t * （m+n）），确实kmp快，但是Trie树一劳永逸，建立之后可以重复使用，而kmp算法要维护next数组，next数组根据敏感词建立，敏感词比较多的时候得不偿失。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Data Structure</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>B &amp; B+ 树</title>
-    <link href="/2021/11/23/B-B-%E6%A0%91/"/>
-    <url>/2021/11/23/B-B-%E6%A0%91/</url>
-    
-    <content type="html"><![CDATA[<h3 id="B树和B-树的区别在于："><a href="#B树和B-树的区别在于：" class="headerlink" title="B树和B+树的区别在于："></a>B树和B+树的区别在于：</h3><ul><li><p>B树的非叶子结点包含实际的值，而B+树的非叶子结点只包含索引信息，所有数据都存放在叶子结点上</p></li><li><p>由于B+树在内部节点上不含数据信息，因此在内存页中能够存放更多的key。根据数据的空间局部性原则，数据具有更好的缓存命中率</p></li><li><p>B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一层的递归遍历。相邻的元素可能在内存中不相邻，所以缓存命中性没有B+树好。</p></li><li><p>B树其优点在于，由于B树的每一个节点都包含key和value，访问一些离根结点近的元素更快</p><p><img src="/2021/11/23/B-B-%E6%A0%91/1.png"></p></li></ul><hr><h3 id="B树B-树对于存储的作用"><a href="#B树B-树对于存储的作用" class="headerlink" title="B树B+树对于存储的作用"></a>B树B+树对于存储的作用</h3><p>数据库系统普遍采用B-/+Tree作为<strong>索引结构</strong></p><p>对磁盘的访问时间分为 <strong>寻道时间</strong>，<strong>旋转时间</strong>，以及<strong>传送时间</strong></p><p><img src="/2021/11/23/B-B-%E6%A0%91/2.png"></p><p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I/O操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数</p><p>由于磁盘的物理特性就决定了其访问速度的限制，因此为了提高效率必须减少磁盘I/O。为了达到这个目的，磁盘往往不是严格的按需读取，而是会预读，即使只需要一个字节，也会一次读入一个块放入内存。这样做基于一个原理：</p><blockquote><p>局部性原理：当一个数据被用到时，其附近的数据也通常会马上被使用。</p></blockquote><p><strong>程序运行期间需要的数据往往比较集中</strong></p><p>预读的长度一般为页（page）的整倍数。页是计算机管理存储器的逻辑块，硬件及操作系统往往将主存和磁盘存储区分割为连续的大小相等的块，每个存储块称为一页（在许多操作系统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p><h3 id="红黑树与B树"><a href="#红黑树与B树" class="headerlink" title="红黑树与B树"></a>红黑树与B树</h3><p><strong>为什么文件系统的索引喜欢B树而不用红黑树或者有序数组呢？</strong></p><p>文件系统和数据库的索引都是存在硬盘上的，并且如果数据量大的话，不一定能一次性加载到内存中。那么如果树都不能加载到内存中就无法查找。</p><p>而B树，每次加载树的一个结点，然后一步步往下找。</p><p>在内存中红黑树的效率高，但是在磁盘中B树就更优了</p><h3 id="为什么Mysql用B-树："><a href="#为什么Mysql用B-树：" class="headerlink" title="为什么Mysql用B+树："></a>为什么Mysql用B+树：</h3><p>​    B+树是在B树上的改造，它的数据都在叶子结点，同时叶子结点之间还加入了指针形成链表</p><p>​    而因为实际业务中一次不是只查一条记录，而是多条，如果使用B树的话，查找相邻的两个元素，可能要进行中序排序，跨层访问。而B+树所有数据都在叶子结点不需要跨层，且同时有链表结构，只需要从头找到尾，通过链表就能把所有数据取出来了</p><h3 id="Hash比B-树还快，为啥不用Hash"><a href="#Hash比B-树还快，为啥不用Hash" class="headerlink" title="Hash比B+树还快，为啥不用Hash"></a>Hash比B+树还快，为啥不用Hash</h3><p>1、这跟实际的业务场景有关，一般实际的业务场景不会只查找一条数据。一条数据确实Hash块，但是多条的话，由于B+树之间索引有序，并且有链表相连，它的查找效率就比Hash快很多了</p><p>2、而且数据库中的索引一般是在磁盘上，数据量大的情况可能无法一次装入内存，B+ 树的设计可以允许数据分批加载，同时树的高度较低，提高查找效率</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>Data Structure</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Final Cut Pro</title>
-    <link href="/2021/11/23/Final-Cut-Pro/"/>
-    <url>/2021/11/23/Final-Cut-Pro/</url>
-    
-    <content type="html"><![CDATA[<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><p><img src="/2021/11/23/Final-Cut-Pro/1.png"></p><p><strong>事件</strong>是所有素材存放的地方</p><p><strong>项目</strong>可以理解为时间线</p><hr><p>一般 1080p 25i or 4K 25i</p><p>编码器使用主流Apple ProRes 422 ，大项目可以使用Apple ProRes 4444</p><hr><p><img src="/2021/11/23/Final-Cut-Pro/2.png"></p><p>素材目录分类</p><p><strong>一定要养成事件归类的习惯</strong></p><hr><p>媒体整理三元素：<strong>关键词</strong>、<strong>分角色</strong>、<strong>片段过滤</strong></p><h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h3><p><img src="/2021/11/23/Final-Cut-Pro/3.png"></p><p>要确保每个素材都写好关键词</p><hr><p><strong>视频粗剪快捷键</strong></p><p>Command + / - 素材缩放</p><p>I 入点 O出点</p><p>F 个人收藏 U 取消收藏</p><p>L 播放 K暂停 J倒放  <strong>J 和 L 按几次就是几倍速</strong></p><p>K + J 一帧一帧倒放</p><p>X 选择整条素材</p><p>；上一个编辑点 ‘ 下一个编辑点</p><hr><p><strong>分角色</strong></p><p>分角色就是给同类素材分配一个颜色即一个轨道</p><hr><p><strong>三点剪辑法</strong></p><p>入点、出点、编辑点</p><p>W 插入 根据播放头的位置来插入（会增加时长）</p><p>E 追加 出现在时间线尾部（会增加时长）</p><p>D 覆盖 </p><p>Q 连接 把两条素材连接在一起 想单独拖动按住 `</p><p>M 打标记点</p><p>A 选择</p><p>T 修建 Command + T 建立蒙太奇</p><p>Control + T 建立标题</p><p>P 可以减少素材长度 并流出灰色空隙</p><p>R 范围选择</p><p>Command R 变速</p><p>Fn D 删除留灰</p><p>按住 B不放 切割</p><p>Command B 切割</p><p>Command + Shift + B 全部素材切割</p><p>Option + 【 减去播放头左边的素材</p><p>Option + 】 减去播放头右边的素材</p><p>shift + ？ 试听前后两秒</p><hr><p>横版照片 可以在效果器里空间符合中选择填充 再 修改Y轴即可</p><p>竖版照片 可以option 按住素材往上 复制一层素材 对底层的素材放大，效果其中 高斯模糊</p><p>匹配颜色 调节白平衡</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>指令速查</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>ANIL</title>
-    <link href="/2021/11/23/ANIL/"/>
-    <url>/2021/11/23/ANIL/</url>
-    
-    <content type="html"><![CDATA[<p><img src="/2021/11/23/ANIL/1.png"></p><p><img src="/2021/11/23/ANIL/7.png"></p><h3 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h3><ul><li>消融实验证明为什么MAML有用</li><li>提出ANIL</li><li>发现，一旦模型训练好，可以不使用Inner loop，并取名*<strong>No Inner Loop（NIL）*</strong></li><li>将ANIL应用在别的元学习方法上也取得了效果</li></ul><h3 id="研究rapid-learning和feature-reuse做了以下工作："><a href="#研究rapid-learning和feature-reuse做了以下工作：" class="headerlink" title="研究rapid learning和feature reuse做了以下工作："></a>研究rapid learning和feature reuse做了以下工作：</h3><ul><li>做了Layer冻结实验</li></ul><p><img src="/2021/11/23/ANIL/2.png"></p><p>说明模型一旦训练完成之后，其实<strong>adaptation的时候参数变化的并不明显</strong></p><ul><li><p><strong>使用Representational similarity tools 直接分析inner loop对特征的变化</strong></p><ul><li><p>使用CCA 和 CKA作为特征层相似度指标</p><blockquote><p>  CCA provides a way to the compare representations of two (latent)  layers L1 , L2 of a neural network, outputting a similarity score  between 0 (not similar at all) and 1 (identical)</p><p>  To further validate this, we also compute CKA , another similarity  metric for neural network representations, which illustrates the same  pattern</p></blockquote><p><img src="/2021/11/23/ANIL/3.png"></p><p>说明Body在Adaption过程中变化不明显，而Head变化明显</p><p>而且，在MAML的10000，20000，30000迭代都表现出相同的特征相似性</p></li></ul></li></ul><h3 id="提出ANIL"><a href="#提出ANIL" class="headerlink" title="提出ANIL"></a>提出ANIL</h3><p>由于前面发现，Body有很好的重用性能，所以在Inner loop阶段只更新Head参数（ANIL），或者干脆不更新直接将meta-parameter（NIL）</p><p><img src="/2021/11/23/ANIL/4.png"></p><p><img src="/2021/11/23/ANIL/5.png"></p><h3 id="进而提出NIL"><a href="#进而提出NIL" class="headerlink" title="进而提出NIL"></a>进而提出NIL</h3><p><img src="/2021/11/23/ANIL/6.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>论文从研究，为什么MAML这么有效出发，通过一系列实验，发现Feature Reuse是MAML成功的主要因素。在此基础上设计了ANIL、NIL，在几乎不影响性能的情况下， 极大的加快了计算速度</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>FewShot Learning</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Meta Learning</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>BOIL</title>
-    <link href="/2021/11/23/BOIL/"/>
-    <url>/2021/11/23/BOIL/</url>
-    
-    <content type="html"><![CDATA[<p><img src="/2021/11/23/BOIL/1.png"></p><p><img src="/2021/11/23/BOIL/2.png"></p><h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h3><ul><li>研究Representation change的作用</li><li>提出BOIL，在Inner Loop只更新Body部分参数，BOIL注重Representaion Change，不像MAML和ANIL重视Representation Reuse</li><li>BOIL取得了很好的效果，尤其是在Cross-Domain问题上</li><li>BOIL在low-/mid-level body上更倾向于Representation Reuse，在High-level body上更倾向于Representation Change</li><li>For ResNet architectures, we propose a disconnection trick that  removes the back- propagation path of the last skip connection. The  disconnection trick strengthens <em>rep- resentation layer change</em> on the high-level body</li></ul><h3 id="BOIL"><a href="#BOIL" class="headerlink" title="BOIL"></a>BOIL<a href="https://wtling.github.io/2021/11/03/BOIL/2.png"><img src="https://wtling.github.io/2021/11/03/BOIL/2.png" alt="img"></a></h3><p>做法：Inner Loop中将Hed的学习率设为0</p><h4 id="做了冻结Head的消融实验"><a href="#做了冻结Head的消融实验" class="headerlink" title="做了冻结Head的消融实验"></a>做了冻结Head的消融实验</h4><p><img src="/2021/11/23/BOIL/3.png"></p><p>​    <strong>说明冻结Head至关重要</strong></p><h4 id="特征图的相似度"><a href="#特征图的相似度" class="headerlink" title="特征图的相似度"></a>特征图的相似度</h4><p><img src="/2021/11/23/BOIL/4.png"></p><p>结果分析：</p><ul><li>Fig2a Fig2b有相似的图像，支持特征重用，他们的特征图在adaptation前后无明显变化。表面MAML/ANIL极度依赖于Meta-initialized Body，而不是Task-specific Adaptation</li><li>Fig2c有差异性的图像，支持特征改变，特征图在adaptation前后有明显变化，前三层支持特征重用，最后一个Conv支持特征改变</li></ul><p><img src="/2021/11/23/BOIL/5.png"></p><p><a href="https://wtling.github.io/2021/11/03/BOIL/5.png">CKA of 4conv</a></p><p><img src="/2021/11/23/BOIL/6.png"></p><h4 id="实验结果的分析"><a href="#实验结果的分析" class="headerlink" title="实验结果的分析"></a>实验结果的分析</h4><p><img src="/2021/11/23/BOIL/7.png">总结：MAML&amp;ANIL的meta-initialization在Adaptation前已经提供了充足的表征信息通过Body。相反BOIL没有得到充分的表征信息，所以body可以提取出更有效的表征信息</p><h4 id="BOIL只需要很少的Adaptation次数"><a href="#BOIL只需要很少的Adaptation次数" class="headerlink" title="BOIL只需要很少的Adaptation次数"></a>BOIL只需要很少的Adaptation次数</h4><p><img src="/2021/11/23/BOIL/8.png"></p><h4 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h4><p><img src="/2021/11/23/BOIL/10.png"></p><p><img src="/2021/11/23/BOIL/12.png"></p>]]></content>
-    
-    
-    <categories>
-      
-      <category>FewShot Learning</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Meta Learning</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>开会心得</title>
-    <link href="/2021/11/23/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/"/>
-    <url>/2021/11/23/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/</url>
-    
-    <content type="html"><![CDATA[<h3 id="2021-11-3-8-00-PM"><a href="#2021-11-3-8-00-PM" class="headerlink" title="2021.11.3 8:00 PM"></a>2021.11.3 8:00 PM</h3><ul><li>交替Train ANIL BOIL，每次train到收敛再切换</li><li>固定Head和后几层Conv，强迫Adaptation的改变提前</li></ul><h3 id="2021-11-5-10-00-AM"><a href="#2021-11-5-10-00-AM" class="headerlink" title="2021.11.5 10:00 AM"></a>2021.11.5 10:00 AM</h3><ul><li>把300Epoch的BOIL拿来接着TrainANIL</li><li>BOIL收敛之后，再Train时，在Out loop里面把Body的lr变小，Head变大</li><li>把Adaption前后无变化的作为死记硬背</li><li>降噪，把无关的东西删掉，只学重要的东西</li></ul>]]></content>
-    
-    
-    <categories>
-      
-      <category>FewShot Learning</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Meta-Learning without Memorization</title>
-    <link href="/2021/11/23/Meta-Learning-without-Memorization/"/>
-    <url>/2021/11/23/Meta-Learning-without-Memorization/</url>
-    
-    <content type="html"><![CDATA[<p><img src="/2021/11/23/Meta-Learning-without-Memorization/1.png"></p><blockquote><p>  <strong>拒绝死记硬背，元学习才能学会学习</strong></p></blockquote><h3 id="之前元学习算法存在的问题："><a href="#之前元学习算法存在的问题：" class="headerlink" title="之前元学习算法存在的问题："></a>之前元学习算法存在的问题：</h3><p>元学习解决unseen task通过：</p><ul><li>从过去的task中学习</li><li>从新任务的training data适应</li></ul><p>两者都很重要！</p><p>但是，由于task的制作不合理，无法做到完全的互斥，导致训练的元学习器是通过记忆的方式来解决训练集里的任务，而失去、减弱了解决新任务的能力。</p><p>称之为“记忆问题”（Memorization Problem）</p><h3 id="什么是“记忆问题”"><a href="#什么是“记忆问题”" class="headerlink" title="什么是“记忆问题”"></a>什么是“记忆问题”</h3><h4 id="之前元学习制作task的过程"><a href="#之前元学习制作task的过程" class="headerlink" title="之前元学习制作task的过程"></a>之前元学习制作task的过程</h4><ul><li>整个数据集分为Train、Valid、Test</li><li>随机抽样多次，每次挑选出m-way类，每类再挑选n-shot张图片，制作成很多个M-way n-shot的Tasks</li></ul><p><img src="/2021/11/23/Meta-Learning-without-Memorization/2.png">记忆问题是一种Task-level OverFitting，在Training任务重表现的很好，但是新的任务，来自Valid或者Test时，模型就GG了。</p><p>通俗的说，小学生做作业，上课老师通过几个物种的图片来教小学生辨认不同事物，小学生并没有学会如何辨认不同事物，二是直接把几个物种学会了，看似在区分这几个物种时很顺利，但是一旦遇到超纲的物种就完蛋。</p><p>再通俗的说，医生按理来说是要根据患者的症状与处方之间学会无论来什么症状的患者都会开对应的药，但是医生只是单纯的记下了以前见过的患者开的什么药，没有学会Adaption，遇到有新症状的患者，就完蛋。</p><p>回到问题本身，“记忆问题”说到底就是，在Training过程中，由于Support 和 Query标签是固定的，在Support中学习的样本，Query中都会见到，导致模型会直接记住样例，而不是学会如何Adaption。</p><h3 id="问题公式化"><a href="#问题公式化" class="headerlink" title="问题公式化"></a>问题公式化</h3><p><img src="/2021/11/23/Meta-Learning-without-Memorization/4.png"></p><h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><h4 id="Meta-Regularization-on-Activation"><a href="#Meta-Regularization-on-Activation" class="headerlink" title="Meta-Regularization on Activation"></a>Meta-Regularization on Activation</h4><p><img src="/2021/11/23/Meta-Learning-without-Memorization/3.png"><img src="/2021/11/23/Meta-Learning-without-Memorization/6.png"></p><h4 id="Meta-Regularization-on-Weights"><a href="#Meta-Regularization-on-Weights" class="headerlink" title="Meta-Regularization on Weights"></a>Meta-Regularization on Weights</h4><p><img src="/2021/11/23/Meta-Learning-without-Memorization/7.png"></p><h3 id="与MAML结合"><a href="#与MAML结合" class="headerlink" title="与MAML结合"></a>与MAML结合</h3><p><img src="/2021/11/23/Meta-Learning-without-Memorization/8.png"></p><hr>]]></content>
-    
-    
-    <categories>
-      
-      <category>FewShot Learning</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Meta Learning</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>bash</title>
-    <link href="/2021/11/23/bash/"/>
-    <url>/2021/11/23/bash/</url>
-    
-    <content type="html"><![CDATA[<h3 id="For-循环"><a href="#For-循环" class="headerlink" title="For 循环"></a>For 循环</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">方法1:<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1,2,3,4&#125;<br><span class="hljs-keyword">do</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br><br>方法2:<br>MAX=10<br><span class="hljs-keyword">for</span>((i = 0;i &lt; MAX; i++))<br><span class="hljs-keyword">do</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br><br>方法3:<br>//从1输出到10<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1..10..1&#125;<br><span class="hljs-keyword">do</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>]]></content>
-    
-    
-    <categories>
-      
-      <category>指令速查</category>
-      
-    </categories>
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>How To Train Your MAML</title>
-    <link href="/2021/11/23/How-To-Train-Your-MAML/"/>
-    <url>/2021/11/23/How-To-Train-Your-MAML/</url>
-    
-    <content type="html"><![CDATA[<p><img src="/2021/11/23/How-To-Train-Your-MAML/1.png"></p><h2 id="MAML存在很多问题"><a href="#MAML存在很多问题" class="headerlink" title="MAML存在很多问题"></a>MAML存在很多问题</h2><ul><li><h3 id="训练时不问题定"><a href="#训练时不问题定" class="headerlink" title="训练时不问题定"></a>训练时不问题定</h3><p>MAML的外循环涉及通过内存换多次反响传播导数，仅有此一点就可能导致梯度问题。然而，模型的框架进一步加剧了梯度的问题，这是一个没有skip-connection的4层卷积网络。缺乏任何跳连意味着每个梯度都必须乘以相同的参数集，在多次反向传播后，展开网络的大深度结构和缺乏跳连会分别导致梯度爆炸和梯度消失</p></li><li><h3 id="对网络结构很敏感"><a href="#对网络结构很敏感" class="headerlink" title="对网络结构很敏感"></a>对网络结构很敏感</h3></li><li><h3 id="有很多超参数需要调"><a href="#有很多超参数需要调" class="headerlink" title="有很多超参数需要调"></a>有很多超参数需要调</h3></li><li><h3 id="耗时耗算力"><a href="#耗时耗算力" class="headerlink" title="耗时耗算力"></a>耗时耗算力</h3><p>梯度更新步骤涉及到计算二阶梯度，这计算非常耗时。之前的一些方法如Reptile，结果各不相同，在某些情况下超过MAML，在其他情况下产生的结果不如MAML。尚未提出在不牺牲泛化性能的同时减少计算时间的方法</p></li><li><h3 id="所有Inner-Loop共享相同的Learning-Rate"><a href="#所有Inner-Loop共享相同的Learning-Rate" class="headerlink" title="所有Inner Loop共享相同的Learning Rate"></a>所有Inner Loop共享相同的Learning Rate</h3><p>Inner Loop中所有参数和所有更新步骤共享相同学习率，这样造成问题。固定学习率需要进行多次超参数搜索才能找到特定数据集的正确学习率，这个过程的计算成本可能非常高</p></li><li><h3 id="Outer-Loop-Learning-Rate-是固定的"><a href="#Outer-Loop-Learning-Rate-是固定的" class="headerlink" title="Outer Loop Learning Rate 是固定的"></a>Outer Loop Learning Rate 是固定的</h3><p>事实证明，使用步进或余弦函数对学习率进行退火对于在多种设置中实现好的泛化性至关重要。因此我们推测使用静态学习率会降低MAML的泛化性能，也可能是优化速度较慢的原因</p></li></ul><h2 id="本文解决的问题"><a href="#本文解决的问题" class="headerlink" title="本文解决的问题"></a>本文解决的问题</h2><p>提出多种对MAML的修改，提高了稳定性，同时在加速&amp;减少计算的前提下，提高了性能，称为MAML++</p><h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><h3 id="梯度不稳定性→多步损失优化-MSL"><a href="#梯度不稳定性→多步损失优化-MSL" class="headerlink" title="梯度不稳定性→多步损失优化(MSL)"></a>梯度不稳定性→多步损失优化(MSL)</h3><p><img src="/2021/11/23/How-To-Train-Your-MAML/2.png"></p><blockquote><p>  就是改变任务的权重，一开始task权重设小，epoch变大跟着慢慢变大</p></blockquote><h3 id="二阶导数成本→导数退火DA"><a href="#二阶导数成本→导数退火DA" class="headerlink" title="二阶导数成本→导数退火DA"></a>二阶导数成本→导数退火DA</h3><p>MAML在整个训练阶段都采用了一阶近似，我们随着训练的进行对微分阶数进行退火。如在训练阶段的前50个epochs使用一阶梯度，然后在训练阶段的其余时间使用二阶梯度。</p><h3 id="缺少Batch-Normalization统计信息累积→Per-Step-Batch-Normalization运行统计信息（BNRS）"><a href="#缺少Batch-Normalization统计信息累积→Per-Step-Batch-Normalization运行统计信息（BNRS）" class="headerlink" title="缺少Batch Normalization统计信息累积→Per-Step Batch Normalization运行统计信息（BNRS）"></a>缺少Batch Normalization统计信息累积→Per-Step Batch Normalization运行统计信息（BNRS）</h3><h3 id="共享（跨步骤）Batch-Normalization偏差→Per-Step-Batch-Normalization权重和偏差（BNWB）"><a href="#共享（跨步骤）Batch-Normalization偏差→Per-Step-Batch-Normalization权重和偏差（BNWB）" class="headerlink" title="共享（跨步骤）Batch Normalization偏差→Per-Step Batch Normalization权重和偏差（BNWB）"></a>共享（跨步骤）Batch Normalization偏差→Per-Step Batch Normalization权重和偏差（BNWB）</h3><h3 id="共享的inner-loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）"><a href="#共享的inner-loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）" class="headerlink" title="共享的inner loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）"></a>共享的inner loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）</h3><h3 id="固定outer-loop学习率→元优化器学习率的余弦退火（CA）"><a href="#固定outer-loop学习率→元优化器学习率的余弦退火（CA）" class="headerlink" title="固定outer loop学习率→元优化器学习率的余弦退火（CA）"></a>固定outer loop学习率→元优化器学习率的余弦退火（CA）</h3>]]></content>
-    
-    
-    <categories>
-      
-      <category>FewShot Learning</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Meta Learning</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Win to go</title>
-    <link href="/2021/11/23/Win-to-go/"/>
-    <url>/2021/11/23/Win-to-go/</url>
-    
-    <content type="html"><![CDATA[<h3 id="设备要求"><a href="#设备要求" class="headerlink" title="设备要求"></a>设备要求</h3><ul><li>支持USB 3.1 协议</li><li>存储容量64G起步</li><li>一台windows环境系统</li><li>装驱动程序的U盘一个</li><li>鼠标（安装驱动 时用）</li></ul><h3 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h3><ul><li><p>windows镜像（1809不行）</p><p>必须<strong>企业版</strong></p><blockquote><p>  驱动下载：<a href="https://msdn.itellyou.cn/">https://msdn.itellyou.cn</a></p></blockquote></li><li><p>Bootcamp驱动程序</p><p>在Mac系统的Bootcamp中下载，直接下到装驱动程序的U盘中</p></li><li><p>Win to go软件</p><blockquote><p>  萝卜头WTG工具：<a href="https://bbs.luobotou.org/thread-761-1-1.html">https://bbs.luobotou.org/thread-761-1-1.html</a></p></blockquote></li></ul><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul><li><p>移动硬盘格式化</p><p>使用MAC自带的磁盘工具，格式选择MAC可以识别的<strong>MAC-DOS（FAT）</strong>或者 <strong>ExFAT</strong></p><p><img src="/2021/11/23/Win-to-go/1.png"></p></li><li><p>把硬盘放到Windows系统里面，打开WTG辅助工具</p><p>设置事项：</p><p>​    常用—勾选：传统、UEEI+MBR</p><p><img src="/2021/11/23/Win-to-go/2.png"></p><p>​    系统—勾选：NTFS-UEFI</p><p><img src="/2021/11/23/Win-to-go/3.png"></p><p>浏览—选择镜像文件</p><p><img src="/2021/11/23/Win-to-go/4.png"></p><p>分卷—选择要安装的window版本</p><p><img src="/2021/11/23/Win-to-go/5.png"></p><p>选择移动硬盘</p><p><img src="/2021/11/23/Win-to-go/6.png"></p><p>（大约20 min 后）</p></li><li><p>按住Option建重启电脑—选择安有window系统的移动硬盘启动—windows个性化设置</p><p>tips：由于还没有驱动，触控板不能用，需要外接鼠标，键盘可以使用windows的虚拟键盘</p></li><li><p>找到U盘里面的setup.exe安装BootCamp驱动—重启</p></li><li><p>安装完成</p></li></ul>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Pytorch Tips</title>
-    <link href="/2021/11/23/Pytorch-Tips/"/>
-    <url>/2021/11/23/Pytorch-Tips/</url>
-    
-    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">### 使用itertools.chain</span><br><br><span class="hljs-keyword">import</span> itertools<br><br>optim.Adam(itertools.chain(encoder.parameters(), decoder.parameters()), lr = <span class="hljs-number">1e-3</span>)<br></code></pre></div></td></tr></table></figure>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>Stock_v1</title>
     <link href="/2021/11/23/Stock-v1/"/>
     <url>/2021/11/23/Stock-v1/</url>
@@ -350,7 +46,311 @@
     <link href="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/"/>
     <url>/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/</url>
     
-    <content type="html"><![CDATA[<p><strong>下载工具</strong>:<a href="https://www.motrix.app/zh-CN/">https://www.motrix.app/zh-CN/</a></p><p><strong>视频素材管理工具</strong>：<a href="https://www.ysjf.com/gate">https://www.ysjf.com/gate</a></p>]]></content>
+    <content type="html"><![CDATA[<h4 id="下载工具-https-www-motrix-app-zh-CN"><a href="#下载工具-https-www-motrix-app-zh-CN" class="headerlink" title="下载工具:https://www.motrix.app/zh-CN/"></a><strong>下载工具</strong>:<a href="https://www.motrix.app/zh-CN/">https://www.motrix.app/zh-CN/</a></h4><h4 id="视频素材管理工具：https-www-ysjf-com-gate"><a href="#视频素材管理工具：https-www-ysjf-com-gate" class="headerlink" title="视频素材管理工具：https://www.ysjf.com/gate"></a><strong>视频素材管理工具</strong>：<a href="https://www.ysjf.com/gate">https://www.ysjf.com/gate</a></h4><h4 id="数学公式ORC识别-Mathpix-Snip：https-mathpix-com"><a href="#数学公式ORC识别-Mathpix-Snip：https-mathpix-com" class="headerlink" title="数学公式ORC识别 Mathpix Snip：https://mathpix.com"></a><strong>数学公式ORC识别 Mathpix Snip</strong>：<a href="https://mathpix.com/">https://mathpix.com</a></h4><h4 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a><strong>安装brew</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">/bin/zsh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span><br></code></pre></div></td></tr></table></figure><h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a><strong>安装node</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">brew install node<br></code></pre></div></td></tr></table></figure><h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo<br></code></pre></div></td></tr></table></figure><p>初始化hexo目录</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> blog<br>hexo init<br></code></pre></div></td></tr></table></figure><p>显示数学公式</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo-filter-mathjax<br>hexo clean<br></code></pre></div></td></tr></table></figure><p>显示图片</p><blockquote><p><a href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></p></blockquote><h4 id="Npx搭建静态服务器局域网传数据"><a href="#Npx搭建静态服务器局域网传数据" class="headerlink" title="Npx搭建静态服务器局域网传数据"></a>Npx搭建静态服务器局域网传数据</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 指定文件夹下<br>npx http-server<br></code></pre></div></td></tr></table></figure><p>打开弹出的网址后，找到指定文件下载就好</p><img src="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png" style="zoom:50%;"><h4 id="MAC添加全局变量"><a href="#MAC添加全局变量" class="headerlink" title="MAC添加全局变量"></a>MAC添加全局变量</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo vi /etc/paths <br><span class="hljs-built_in">source</span> ~/.bash_profile 生效<br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Pytorch Tips</title>
+    <link href="/2021/11/12/Pytorch-Tips/"/>
+    <url>/2021/11/12/Pytorch-Tips/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight python"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs python"><span class="hljs-comment">### 使用itertools.chain</span><br><br><span class="hljs-keyword">import</span> itertools<br><br>optim.Adam(itertools.chain(encoder.parameters(), decoder.parameters()), lr = <span class="hljs-number">1e-3</span>)<br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>开会心得</title>
+    <link href="/2021/11/05/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/"/>
+    <url>/2021/11/05/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/</url>
+    
+    <content type="html"><![CDATA[<h3 id="2021-11-3-8-00-PM"><a href="#2021-11-3-8-00-PM" class="headerlink" title="2021.11.3 8:00 PM"></a>2021.11.3 8:00 PM</h3><ul><li>交替Train ANIL BOIL，每次train到收敛再切换</li><li>固定Head和后几层Conv，强迫Adaptation的改变提前</li></ul><h3 id="2021-11-5-10-00-AM"><a href="#2021-11-5-10-00-AM" class="headerlink" title="2021.11.5 10:00 AM"></a>2021.11.5 10:00 AM</h3><ul><li>把300Epoch的BOIL拿来接着TrainANIL</li><li>BOIL收敛之后，再Train时，在Out loop里面把Body的lr变小，Head变大</li><li>把Adaption前后无变化的作为死记硬背</li><li>降噪，把无关的东西删掉，只学重要的东西</li></ul>]]></content>
+    
+    
+    <categories>
+      
+      <category>FewShot Learning</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Final Cut Pro</title>
+    <link href="/2021/11/03/Final-Cut-Pro/"/>
+    <url>/2021/11/03/Final-Cut-Pro/</url>
+    
+    <content type="html"><![CDATA[<h3 id="关系"><a href="#关系" class="headerlink" title="关系"></a>关系</h3><p><img src="/2021/11/03/Final-Cut-Pro/1.png"></p><p><strong>事件</strong>是所有素材存放的地方</p><p><strong>项目</strong>可以理解为时间线</p><hr><p>一般 1080p 25i or 4K 25i</p><p>编码器使用主流Apple ProRes 422 ，大项目可以使用Apple ProRes 4444</p><hr><p><img src="/2021/11/03/Final-Cut-Pro/2.png"></p><p>素材目录分类</p><p><strong>一定要养成事件归类的习惯</strong></p><hr><p>媒体整理三元素：<strong>关键词</strong>、<strong>分角色</strong>、<strong>片段过滤</strong></p><h3 id="关键词"><a href="#关键词" class="headerlink" title="关键词"></a>关键词</h3><p><img src="/2021/11/03/Final-Cut-Pro/3.png"></p><p>要确保每个素材都写好关键词</p><hr><p><strong>视频粗剪快捷键</strong></p><p>Command + / - 素材缩放</p><p>I 入点 O出点</p><p>F 个人收藏 U 取消收藏</p><p>L 播放 K暂停 J倒放  <strong>J 和 L 按几次就是几倍速</strong></p><p>K + J 一帧一帧倒放</p><p>X 选择整条素材</p><p>；上一个编辑点 ‘ 下一个编辑点</p><hr><p><strong>分角色</strong></p><p>分角色就是给同类素材分配一个颜色即一个轨道</p><hr><p><strong>三点剪辑法</strong></p><p>入点、出点、编辑点</p><p>W 插入 根据播放头的位置来插入（会增加时长）</p><p>E 追加 出现在时间线尾部（会增加时长）</p><p>D 覆盖 </p><p>Q 连接 把两条素材连接在一起 想单独拖动按住 `</p><p>M 打标记点</p><p>A 选择</p><p>T 修建 Command + T 建立蒙太奇</p><p>Control + T 建立标题</p><p>P 可以减少素材长度 并流出灰色空隙</p><p>R 范围选择</p><p>Command R 变速</p><p>Fn D 删除留灰</p><p>按住 B不放 切割</p><p>Command B 切割</p><p>Command + Shift + B 全部素材切割</p><p>Option + 【 减去播放头左边的素材</p><p>Option + 】 减去播放头右边的素材</p><p>shift + ？ 试听前后两秒</p><hr><p>横版照片 可以在效果器里空间符合中选择填充 再 修改Y轴即可</p><p>竖版照片 可以option 按住素材往上 复制一层素材 对底层的素材放大，效果其中 高斯模糊</p><p>匹配颜色 调节白平衡</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>指令速查</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Meta-Learning without Memorization</title>
+    <link href="/2021/10/25/Meta-Learning-without-Memorization/"/>
+    <url>/2021/10/25/Meta-Learning-without-Memorization/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/10/25/Meta-Learning-without-Memorization/1.png"></p><blockquote><p>  <strong>拒绝死记硬背，元学习才能学会学习</strong></p></blockquote><h3 id="之前元学习算法存在的问题："><a href="#之前元学习算法存在的问题：" class="headerlink" title="之前元学习算法存在的问题："></a>之前元学习算法存在的问题：</h3><p>元学习解决unseen task通过：</p><ul><li>从过去的task中学习</li><li>从新任务的training data适应</li></ul><p>两者都很重要！</p><p>但是，由于task的制作不合理，无法做到完全的互斥，导致训练的元学习器是通过记忆的方式来解决训练集里的任务，而失去、减弱了解决新任务的能力。</p><p>称之为“记忆问题”（Memorization Problem）</p><h3 id="什么是“记忆问题”"><a href="#什么是“记忆问题”" class="headerlink" title="什么是“记忆问题”"></a>什么是“记忆问题”</h3><h4 id="之前元学习制作task的过程"><a href="#之前元学习制作task的过程" class="headerlink" title="之前元学习制作task的过程"></a>之前元学习制作task的过程</h4><ul><li>整个数据集分为Train、Valid、Test</li><li>随机抽样多次，每次挑选出m-way类，每类再挑选n-shot张图片，制作成很多个M-way n-shot的Tasks</li></ul><p><img src="/2021/10/25/Meta-Learning-without-Memorization/2.png">记忆问题是一种Task-level OverFitting，在Training任务重表现的很好，但是新的任务，来自Valid或者Test时，模型就GG了。</p><p>通俗的说，小学生做作业，上课老师通过几个物种的图片来教小学生辨认不同事物，小学生并没有学会如何辨认不同事物，二是直接把几个物种学会了，看似在区分这几个物种时很顺利，但是一旦遇到超纲的物种就完蛋。</p><p>再通俗的说，医生按理来说是要根据患者的症状与处方之间学会无论来什么症状的患者都会开对应的药，但是医生只是单纯的记下了以前见过的患者开的什么药，没有学会Adaption，遇到有新症状的患者，就完蛋。</p><p>回到问题本身，“记忆问题”说到底就是，在Training过程中，由于Support 和 Query标签是固定的，在Support中学习的样本，Query中都会见到，导致模型会直接记住样例，而不是学会如何Adaption。</p><h3 id="问题公式化"><a href="#问题公式化" class="headerlink" title="问题公式化"></a>问题公式化</h3><p><img src="/2021/10/25/Meta-Learning-without-Memorization/4.png"></p><h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><h4 id="Meta-Regularization-on-Activation"><a href="#Meta-Regularization-on-Activation" class="headerlink" title="Meta-Regularization on Activation"></a>Meta-Regularization on Activation</h4><p><img src="/2021/10/25/Meta-Learning-without-Memorization/3.png"><img src="/2021/10/25/Meta-Learning-without-Memorization/6.png"></p><h4 id="Meta-Regularization-on-Weights"><a href="#Meta-Regularization-on-Weights" class="headerlink" title="Meta-Regularization on Weights"></a>Meta-Regularization on Weights</h4><p><img src="/2021/10/25/Meta-Learning-without-Memorization/7.png"></p><h3 id="与MAML结合"><a href="#与MAML结合" class="headerlink" title="与MAML结合"></a>与MAML结合</h3><p><img src="/2021/10/25/Meta-Learning-without-Memorization/8.png"></p><hr>]]></content>
+    
+    
+    <categories>
+      
+      <category>FewShot Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Meta Learning</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>How To Train Your MAML</title>
+    <link href="/2021/10/23/How-To-Train-Your-MAML/"/>
+    <url>/2021/10/23/How-To-Train-Your-MAML/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/10/23/How-To-Train-Your-MAML/1.png"></p><h2 id="MAML存在很多问题"><a href="#MAML存在很多问题" class="headerlink" title="MAML存在很多问题"></a>MAML存在很多问题</h2><ul><li><h3 id="训练时不问题定"><a href="#训练时不问题定" class="headerlink" title="训练时不问题定"></a>训练时不问题定</h3><p>MAML的外循环涉及通过内存换多次反响传播导数，仅有此一点就可能导致梯度问题。然而，模型的框架进一步加剧了梯度的问题，这是一个没有skip-connection的4层卷积网络。缺乏任何跳连意味着每个梯度都必须乘以相同的参数集，在多次反向传播后，展开网络的大深度结构和缺乏跳连会分别导致梯度爆炸和梯度消失</p></li><li><h3 id="对网络结构很敏感"><a href="#对网络结构很敏感" class="headerlink" title="对网络结构很敏感"></a>对网络结构很敏感</h3></li><li><h3 id="有很多超参数需要调"><a href="#有很多超参数需要调" class="headerlink" title="有很多超参数需要调"></a>有很多超参数需要调</h3></li><li><h3 id="耗时耗算力"><a href="#耗时耗算力" class="headerlink" title="耗时耗算力"></a>耗时耗算力</h3><p>梯度更新步骤涉及到计算二阶梯度，这计算非常耗时。之前的一些方法如Reptile，结果各不相同，在某些情况下超过MAML，在其他情况下产生的结果不如MAML。尚未提出在不牺牲泛化性能的同时减少计算时间的方法</p></li><li><h3 id="所有Inner-Loop共享相同的Learning-Rate"><a href="#所有Inner-Loop共享相同的Learning-Rate" class="headerlink" title="所有Inner Loop共享相同的Learning Rate"></a>所有Inner Loop共享相同的Learning Rate</h3><p>Inner Loop中所有参数和所有更新步骤共享相同学习率，这样造成问题。固定学习率需要进行多次超参数搜索才能找到特定数据集的正确学习率，这个过程的计算成本可能非常高</p></li><li><h3 id="Outer-Loop-Learning-Rate-是固定的"><a href="#Outer-Loop-Learning-Rate-是固定的" class="headerlink" title="Outer Loop Learning Rate 是固定的"></a>Outer Loop Learning Rate 是固定的</h3><p>事实证明，使用步进或余弦函数对学习率进行退火对于在多种设置中实现好的泛化性至关重要。因此我们推测使用静态学习率会降低MAML的泛化性能，也可能是优化速度较慢的原因</p></li></ul><h2 id="本文解决的问题"><a href="#本文解决的问题" class="headerlink" title="本文解决的问题"></a>本文解决的问题</h2><p>提出多种对MAML的修改，提高了稳定性，同时在加速&amp;减少计算的前提下，提高了性能，称为MAML++</p><h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><h3 id="梯度不稳定性→多步损失优化-MSL"><a href="#梯度不稳定性→多步损失优化-MSL" class="headerlink" title="梯度不稳定性→多步损失优化(MSL)"></a>梯度不稳定性→多步损失优化(MSL)</h3><p><img src="/2021/10/23/How-To-Train-Your-MAML/2.png"></p><blockquote><p>  就是改变任务的权重，一开始task权重设小，epoch变大跟着慢慢变大</p></blockquote><h3 id="二阶导数成本→导数退火DA"><a href="#二阶导数成本→导数退火DA" class="headerlink" title="二阶导数成本→导数退火DA"></a>二阶导数成本→导数退火DA</h3><p>MAML在整个训练阶段都采用了一阶近似，我们随着训练的进行对微分阶数进行退火。如在训练阶段的前50个epochs使用一阶梯度，然后在训练阶段的其余时间使用二阶梯度。</p><h3 id="缺少Batch-Normalization统计信息累积→Per-Step-Batch-Normalization运行统计信息（BNRS）"><a href="#缺少Batch-Normalization统计信息累积→Per-Step-Batch-Normalization运行统计信息（BNRS）" class="headerlink" title="缺少Batch Normalization统计信息累积→Per-Step Batch Normalization运行统计信息（BNRS）"></a>缺少Batch Normalization统计信息累积→Per-Step Batch Normalization运行统计信息（BNRS）</h3><h3 id="共享（跨步骤）Batch-Normalization偏差→Per-Step-Batch-Normalization权重和偏差（BNWB）"><a href="#共享（跨步骤）Batch-Normalization偏差→Per-Step-Batch-Normalization权重和偏差（BNWB）" class="headerlink" title="共享（跨步骤）Batch Normalization偏差→Per-Step Batch Normalization权重和偏差（BNWB）"></a>共享（跨步骤）Batch Normalization偏差→Per-Step Batch Normalization权重和偏差（BNWB）</h3><h3 id="共享的inner-loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）"><a href="#共享的inner-loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）" class="headerlink" title="共享的inner loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）"></a>共享的inner loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）</h3><h3 id="固定outer-loop学习率→元优化器学习率的余弦退火（CA）"><a href="#固定outer-loop学习率→元优化器学习率的余弦退火（CA）" class="headerlink" title="固定outer loop学习率→元优化器学习率的余弦退火（CA）"></a>固定outer loop学习率→元优化器学习率的余弦退火（CA）</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>FewShot Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Meta Learning</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Win to go</title>
+    <link href="/2021/10/23/Win-to-go/"/>
+    <url>/2021/10/23/Win-to-go/</url>
+    
+    <content type="html"><![CDATA[<h3 id="设备要求"><a href="#设备要求" class="headerlink" title="设备要求"></a>设备要求</h3><ul><li>支持USB 3.1 协议</li><li>存储容量64G起步</li><li>一台windows环境系统</li><li>装驱动程序的U盘一个</li><li>鼠标（安装驱动 时用）</li></ul><h3 id="软件要求"><a href="#软件要求" class="headerlink" title="软件要求"></a>软件要求</h3><ul><li><p>windows镜像（1809不行）</p><p>必须<strong>企业版</strong></p><blockquote><p>  驱动下载：<a href="https://msdn.itellyou.cn/">https://msdn.itellyou.cn</a></p></blockquote></li><li><p>Bootcamp驱动程序</p><p>在Mac系统的Bootcamp中下载，直接下到装驱动程序的U盘中</p></li><li><p>Win to go软件</p><blockquote><p>  萝卜头WTG工具：<a href="https://bbs.luobotou.org/thread-761-1-1.html">https://bbs.luobotou.org/thread-761-1-1.html</a></p></blockquote></li></ul><h3 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h3><ul><li><p>移动硬盘格式化</p><p>使用MAC自带的磁盘工具，格式选择MAC可以识别的<strong>MAC-DOS（FAT）</strong>或者 <strong>ExFAT</strong></p><p><img src="/2021/10/23/Win-to-go/1.png"></p></li><li><p>把硬盘放到Windows系统里面，打开WTG辅助工具</p><p>设置事项：</p><p>​    常用—勾选：传统、UEEI+MBR</p><p><img src="/2021/10/23/Win-to-go/2.png"></p><p>​    系统—勾选：NTFS-UEFI</p><p><img src="/2021/10/23/Win-to-go/3.png"></p><p>浏览—选择镜像文件</p><p><img src="/2021/10/23/Win-to-go/4.png"></p><p>分卷—选择要安装的window版本</p><p><img src="/2021/10/23/Win-to-go/5.png"></p><p>选择移动硬盘</p><p><img src="/2021/10/23/Win-to-go/6.png"></p><p>（大约20 min 后）</p></li><li><p>按住Option建重启电脑—选择安有window系统的移动硬盘启动—windows个性化设置</p><p>tips：由于还没有驱动，触控板不能用，需要外接鼠标，键盘可以使用windows的虚拟键盘</p></li><li><p>找到U盘里面的setup.exe安装BootCamp驱动—重启</p></li><li><p>安装完成</p></li></ul>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Linux命令</title>
+    <link href="/2021/09/20/Linux%E5%91%BD%E4%BB%A4/"/>
+    <url>/2021/09/20/Linux%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h3 id="基本概念及操作"><a href="#基本概念及操作" class="headerlink" title="基本概念及操作"></a>基本概念及操作</h3><p>【Tab】    <strong>补全代码</strong></p><p>touch name    <strong>创建一个名为name的文件</strong></p><p>pwd    <strong>查看当前所在目录</strong></p><p>find    <strong>查找某文件</strong></p><p>【ctrl+c】    <strong>终止程序</strong></p><p>【ctrl+a】    <strong>将光标移到行头</strong></p><p>【ctrl+e】    <strong>将光标移到行末</strong></p><p>【ctrl+k】    <strong>从光标处删除到行末</strong></p><p>man     <strong>查看命令的手册</strong></p><p><strong>通配符的使用</strong></p><p>touch love_{1..10}_shiyanlou.txt     快速生成1-10的对应的十个文件 </p><p>ls *.txt    查找所有txt的文件</p><p>banner    输出图形字符</p><ul><li>sudo apt-get install sysvbanner* </li></ul><h3 id="用户及文件权限管理"><a href="#用户及文件权限管理" class="headerlink" title="用户及文件权限管理"></a>用户及文件权限管理</h3><p>who<strong>命令查看当前用户信息</strong></p><p>su     切换到用户<strong>user</strong></p><p>sudo adduser     <strong>新建一个为user的</strong>用户**</p><p>groups     查看user<strong>所属的用户组</strong></p><p>Sudo usermod -G sudo lilei    <strong>使用户获得sudo</strong></p><p>Sudo deluder lilei —remove-home    <strong>删除用户</strong></p><p>​    —<em>remove-home</em> 参数可以一并将用户的工作目录删除</p><p><img src="/2021/09/20/Linux%E5%91%BD%E4%BB%A4/1.png"></p><p>ls -l    <strong>列出所有文件及其详细</strong></p><p>ls -l     <strong>列出指定文件详细</strong></p><p>sudo chown       <strong>将文件所有者变更</strong></p><p>chmod 777     <strong>改变指定文件的权限</strong></p><h3 id="目录结构及对文件的基本操作"><a href="#目录结构及对文件的基本操作" class="headerlink" title="目录结构及对文件的基本操作"></a>目录结构及对文件的基本操作</h3><p><img src="/2021/09/20/Linux%E5%91%BD%E4%BB%A4/2.png"></p><p>cd -     <strong>返回上一次的目录</strong></p><p>cd ~    <strong>返回当前用户的home</strong></p><p>mkdir mydir    <strong>创建目录</strong></p><p>mkdir -p father/son/grandson    <strong>创建多级目录</strong></p><p>cp 文件 路径    <strong>将文件复制到指定路径下</strong></p><p>cp -r 文件 路径    <strong>递归复制</strong></p><p>rm 文件名    <strong>删除文件</strong></p><p>rm -r family    <strong>删除目录</strong></p><p>rm -f test    <strong>强制删除，针对权限不足的情况</strong></p><p>mv 文件名    目的目录    <strong>移动文件到指定目录下</strong></p><p>mv 旧文件名 新文件名    <strong>重命名</strong></p><p>cat 文件名    <strong>打印文件内容到标准输出</strong></p><p>cat -n passwd    <strong>显示行号</strong></p><p>more/less 文件名    <strong>分页查看文件</strong>    </p><p>file 文件名    <strong>查看文件的类型</strong></p><h3 id="VIM"><a href="#VIM" class="headerlink" title="VIM"></a>VIM</h3><p>:q!    <strong>放弃所有改动</strong></p><p>:wq    <strong>保存改动</strong></p><p>i    <strong>在光标钱插入文本</strong></p><p>A    <strong>在一行的最后添加文本</strong></p><p>dw     <strong>可以删除从光标处删除一个词至词的末尾</strong></p><p>d$    <strong>从光标处删除到末尾</strong></p><h3 id="环境变量和文件查找"><a href="#环境变量和文件查找" class="headerlink" title="环境变量和文件查找"></a>环境变量和文件查找</h3><p>/etc/profile    <strong>变量对所有用户生效</strong></p><p>/etc/bashrc     <strong>变量只对当前用户生效</strong></p><p>PATH=$PATH:/home/shiyanlou/mybin    <strong>添加自定义路径</strong></p><p>根据环境使用的Shell，有的是zsh，有的是bash，对应的.zshrc 和 .bashrc</p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;PATH=<span class="hljs-variable">$PATH</span>:/home/shiyanlou/mybin&quot;</span> &gt;&gt; .zshrc将路径复制到.zshrc文件中<br>&gt;&gt; 是追加<br>&gt;是覆盖<br></code></pre></div></td></tr></table></figure><p>source .zshrc    <strong>立即生效</strong></p><p>搜索文件：</p><p>where is <strong>简单快速</strong></p><p>locate <strong>快而全</strong> ****</p><p>locate <strong>需要先sudo update</strong></p><p>find /etc -name sources.list     查找etc文件夹下的sources.list在哪</p><p>cmatrix <strong>黑客帝国数字雨</strong></p><h3 id="文件打包和解压缩"><a href="#文件打包和解压缩" class="headerlink" title="文件打包和解压缩"></a>文件打包和解压缩</h3><p>zip -r -9 -q -o shiyanlou.zip /home/shiyanlou/Desktop</p><p>-r <strong>表示递归打包包含子目录的全部内容</strong></p><p>-q <strong>安静模式，不向屏幕输出信息</strong></p><p>-o <strong>表示输出文件</strong></p><p>unzip shiyanlou.zip    <strong>将文件解压到当前文件夹下</strong></p><p>Unzip shiyanlou.zip -d ziptest     <strong>将文件解压到指定文件夹下</strong></p><ul><li>zip：</li><li>打包 ：zip something.zip something （目录请加 -r 参数）</li><li>解包：unzip something.zip</li><li>指定路径：-d 参数</li><li>tar：</li><li>打包：tar -cf something.tar something</li><li>解包：tar -xf something.tar</li><li>指定路径：-C 参数</li></ul><h3 id="文件操作和磁盘管理"><a href="#文件操作和磁盘管理" class="headerlink" title="文件操作和磁盘管理"></a>文件操作和磁盘管理</h3><p>df    查看磁盘容量</p><h3 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a>软件安装</h3><p>sudo apt-get install XXX</p><p>sudo apt-get update    更新软件源</p><p>sudo apt-get upgrade    升级没有依赖问题的软件包</p><p>sudo apt-get remove XXX    卸载软件</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>指令速查</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BOIL</title>
+    <link href="/2021/09/02/BOIL/"/>
+    <url>/2021/09/02/BOIL/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/09/02/BOIL/1.png"></p><p><img src="/2021/09/02/BOIL/2.png"></p><h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h3><ul><li>研究Representation change的作用</li><li>提出BOIL，在Inner Loop只更新Body部分参数，BOIL注重Representaion Change，不像MAML和ANIL重视Representation Reuse</li><li>BOIL取得了很好的效果，尤其是在Cross-Domain问题上</li><li>BOIL在low-/mid-level body上更倾向于Representation Reuse，在High-level body上更倾向于Representation Change</li><li>For ResNet architectures, we propose a disconnection trick that  removes the back- propagation path of the last skip connection. The  disconnection trick strengthens <em>rep- resentation layer change</em> on the high-level body</li></ul><h3 id="BOIL"><a href="#BOIL" class="headerlink" title="BOIL"></a>BOIL<a href="https://wtling.github.io/2021/11/03/BOIL/2.png"><img src="https://wtling.github.io/2021/11/03/BOIL/2.png" alt="img"></a></h3><p>做法：Inner Loop中将Hed的学习率设为0</p><h4 id="做了冻结Head的消融实验"><a href="#做了冻结Head的消融实验" class="headerlink" title="做了冻结Head的消融实验"></a>做了冻结Head的消融实验</h4><p><img src="/2021/09/02/BOIL/3.png"></p><p>​    <strong>说明冻结Head至关重要</strong></p><h4 id="特征图的相似度"><a href="#特征图的相似度" class="headerlink" title="特征图的相似度"></a>特征图的相似度</h4><p><img src="/2021/09/02/BOIL/4.png"></p><p>结果分析：</p><ul><li>Fig2a Fig2b有相似的图像，支持特征重用，他们的特征图在adaptation前后无明显变化。表面MAML/ANIL极度依赖于Meta-initialized Body，而不是Task-specific Adaptation</li><li>Fig2c有差异性的图像，支持特征改变，特征图在adaptation前后有明显变化，前三层支持特征重用，最后一个Conv支持特征改变</li></ul><p><img src="/2021/09/02/BOIL/5.png"></p><p><a href="https://wtling.github.io/2021/11/03/BOIL/5.png">CKA of 4conv</a></p><p><img src="/2021/09/02/BOIL/6.png"></p><h4 id="实验结果的分析"><a href="#实验结果的分析" class="headerlink" title="实验结果的分析"></a>实验结果的分析</h4><p><img src="/2021/09/02/BOIL/7.png">总结：MAML&amp;ANIL的meta-initialization在Adaptation前已经提供了充足的表征信息通过Body。相反BOIL没有得到充分的表征信息，所以body可以提取出更有效的表征信息</p><h4 id="BOIL只需要很少的Adaptation次数"><a href="#BOIL只需要很少的Adaptation次数" class="headerlink" title="BOIL只需要很少的Adaptation次数"></a>BOIL只需要很少的Adaptation次数</h4><p><img src="/2021/09/02/BOIL/8.png"></p><h4 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h4><p><img src="/2021/09/02/BOIL/10.png"></p><p><img src="/2021/09/02/BOIL/12.png"></p>]]></content>
+    
+    
+    <categories>
+      
+      <category>FewShot Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Meta Learning</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>bash</title>
+    <link href="/2021/09/02/bash/"/>
+    <url>/2021/09/02/bash/</url>
+    
+    <content type="html"><![CDATA[<h3 id="For-循环"><a href="#For-循环" class="headerlink" title="For 循环"></a>For 循环</h3><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">方法1:<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1,2,3,4&#125;<br><span class="hljs-keyword">do</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br><br>方法2:<br>MAX=10<br><span class="hljs-keyword">for</span>((i = 0;i &lt; MAX; i++))<br><span class="hljs-keyword">do</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br><br>方法3:<br>//从1输出到10<br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> &#123;1..10..1&#125;<br><span class="hljs-keyword">do</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$i</span><br><span class="hljs-keyword">done</span><br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>指令速查</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>ANIL</title>
+    <link href="/2021/09/01/ANIL/"/>
+    <url>/2021/09/01/ANIL/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/2021/09/01/ANIL/1.png"></p><p><img src="/2021/09/01/ANIL/7.png"></p><h3 id="贡献："><a href="#贡献：" class="headerlink" title="贡献："></a>贡献：</h3><ul><li>消融实验证明为什么MAML有用</li><li>提出ANIL</li><li>发现，一旦模型训练好，可以不使用Inner loop，并取名*<strong>No Inner Loop（NIL）*</strong></li><li>将ANIL应用在别的元学习方法上也取得了效果</li></ul><h3 id="研究rapid-learning和feature-reuse做了以下工作："><a href="#研究rapid-learning和feature-reuse做了以下工作：" class="headerlink" title="研究rapid learning和feature reuse做了以下工作："></a>研究rapid learning和feature reuse做了以下工作：</h3><ul><li>做了Layer冻结实验</li></ul><p><img src="/2021/09/01/ANIL/2.png"></p><p>说明模型一旦训练完成之后，其实<strong>adaptation的时候参数变化的并不明显</strong></p><ul><li><p><strong>使用Representational similarity tools 直接分析inner loop对特征的变化</strong></p><ul><li><p>使用CCA 和 CKA作为特征层相似度指标</p><blockquote><p>  CCA provides a way to the compare representations of two (latent)  layers L1 , L2 of a neural network, outputting a similarity score  between 0 (not similar at all) and 1 (identical)</p><p>  To further validate this, we also compute CKA , another similarity  metric for neural network representations, which illustrates the same  pattern</p></blockquote><p><img src="/2021/09/01/ANIL/3.png"></p><p>说明Body在Adaption过程中变化不明显，而Head变化明显</p><p>而且，在MAML的10000，20000，30000迭代都表现出相同的特征相似性</p></li></ul></li></ul><h3 id="提出ANIL"><a href="#提出ANIL" class="headerlink" title="提出ANIL"></a>提出ANIL</h3><p>由于前面发现，Body有很好的重用性能，所以在Inner loop阶段只更新Head参数（ANIL），或者干脆不更新直接将meta-parameter（NIL）</p><p><img src="/2021/09/01/ANIL/4.png"></p><p><img src="/2021/09/01/ANIL/5.png"></p><h3 id="进而提出NIL"><a href="#进而提出NIL" class="headerlink" title="进而提出NIL"></a>进而提出NIL</h3><p><img src="/2021/09/01/ANIL/6.png"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>论文从研究，为什么MAML这么有效出发，通过一系列实验，发现Feature Reuse是MAML成功的主要因素。在此基础上设计了ANIL、NIL，在几乎不影响性能的情况下， 极大的加快了计算速度</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>FewShot Learning</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>Meta Learning</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>conda常见命令</title>
+    <link href="/2021/08/23/conda%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/"/>
+    <url>/2021/08/23/conda%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Conda常用命令"><a href="#Conda常用命令" class="headerlink" title="Conda常用命令"></a>Conda常用命令</h2><p>conda list 查看安装了哪些包</p><p>conda env list 查看当前存在哪些虚拟环境</p><h3 id="创建Python环境"><a href="#创建Python环境" class="headerlink" title="创建Python环境"></a>创建Python环境</h3><p>conda create -n name python=X.X</p><h3 id="激活环境"><a href="#激活环境" class="headerlink" title="激活环境"></a>激活环境</h3><p>source activate name</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>B &amp; B+ 树</title>
+    <link href="/2021/07/20/B-B-%E6%A0%91/"/>
+    <url>/2021/07/20/B-B-%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<h3 id="B树和B-树的区别在于："><a href="#B树和B-树的区别在于：" class="headerlink" title="B树和B+树的区别在于："></a>B树和B+树的区别在于：</h3><ul><li><p>B树的非叶子结点包含实际的值，而B+树的非叶子结点只包含索引信息，所有数据都存放在叶子结点上</p></li><li><p>由于B+树在内部节点上不含数据信息，因此在内存页中能够存放更多的key。根据数据的空间局部性原则，数据具有更好的缓存命中率</p></li><li><p>B+树的叶子结点都是相链的，因此对整棵树的便利只需要一次线性遍历叶子结点即可。而且由于数据顺序排列并且相连，所以便于区间查找和搜索。而B树则需要进行每一层的递归遍历。相邻的元素可能在内存中不相邻，所以缓存命中性没有B+树好。</p></li><li><p>B树其优点在于，由于B树的每一个节点都包含key和value，访问一些离根结点近的元素更快</p><p><img src="/2021/07/20/B-B-%E6%A0%91/1.png"></p></li></ul><hr><h3 id="B树B-树对于存储的作用"><a href="#B树B-树对于存储的作用" class="headerlink" title="B树B+树对于存储的作用"></a>B树B+树对于存储的作用</h3><p>数据库系统普遍采用B-/+Tree作为<strong>索引结构</strong></p><p>对磁盘的访问时间分为 <strong>寻道时间</strong>，<strong>旋转时间</strong>，以及<strong>传送时间</strong></p><p><img src="/2021/07/20/B-B-%E6%A0%91/2.png"></p><p>一般来说，索引本身也很大，不可能全部存储在内存中，因此索引往往以索引文件的形式存储的磁盘上。这样的话，索引查找过程中就要产生磁盘I/O消耗，相对于内存存取，I/O存取的消耗要高几个数量级，所以评价一个数据结构作为索引的优劣最重要的指标就是在查找过程中磁盘I/O操作次数的渐进复杂度。换句话说，索引的结构组织要尽量减少查找过程中磁盘I/O的存取次数</p><p>由于磁盘的物理特性就决定了其访问速度的限制，因此为了提高效率必须减少磁盘I/O。为了达到这个目的，磁盘往往不是严格的按需读取，而是会预读，即使只需要一个字节，也会一次读入一个块放入内存。这样做基于一个原理：</p><blockquote><p>局部性原理：当一个数据被用到时，其附近的数据也通常会马上被使用。</p></blockquote><p><strong>程序运行期间需要的数据往往比较集中</strong></p><p>预读的长度一般为页（page）的整倍数。页是计算机管理存储器的逻辑块，硬件及操作系统往往将主存和磁盘存储区分割为连续的大小相等的块，每个存储块称为一页（在许多操作系统中，页得大小通常为4k），主存和磁盘以页为单位交换数据。当程序要读取的数据不在主存中时，会触发一个缺页异常，此时系统会向磁盘发出读盘信号，磁盘会找到数据的起始位置并向后连续读取一页或几页载入内存中，然后异常返回，程序继续运行。</p><h3 id="红黑树与B树"><a href="#红黑树与B树" class="headerlink" title="红黑树与B树"></a>红黑树与B树</h3><p><strong>为什么文件系统的索引喜欢B树而不用红黑树或者有序数组呢？</strong></p><p>文件系统和数据库的索引都是存在硬盘上的，并且如果数据量大的话，不一定能一次性加载到内存中。那么如果树都不能加载到内存中就无法查找。</p><p>而B树，每次加载树的一个结点，然后一步步往下找。</p><p>在内存中红黑树的效率高，但是在磁盘中B树就更优了</p><h3 id="为什么Mysql用B-树："><a href="#为什么Mysql用B-树：" class="headerlink" title="为什么Mysql用B+树："></a>为什么Mysql用B+树：</h3><p>​    B+树是在B树上的改造，它的数据都在叶子结点，同时叶子结点之间还加入了指针形成链表</p><p>​    而因为实际业务中一次不是只查一条记录，而是多条，如果使用B树的话，查找相邻的两个元素，可能要进行中序排序，跨层访问。而B+树所有数据都在叶子结点不需要跨层，且同时有链表结构，只需要从头找到尾，通过链表就能把所有数据取出来了</p><h3 id="Hash比B-树还快，为啥不用Hash"><a href="#Hash比B-树还快，为啥不用Hash" class="headerlink" title="Hash比B+树还快，为啥不用Hash"></a>Hash比B+树还快，为啥不用Hash</h3><p>1、这跟实际的业务场景有关，一般实际的业务场景不会只查找一条数据。一条数据确实Hash块，但是多条的话，由于B+树之间索引有序，并且有链表相连，它的查找效率就比Hash快很多了</p><p>2、而且数据库中的索引一般是在磁盘上，数据量大的情况可能无法一次装入内存，B+ 树的设计可以允许数据分批加载，同时树的高度较低，提高查找效率</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Data Structure</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Trie树</title>
+    <link href="/2021/07/12/Trie%E6%A0%91/"/>
+    <url>/2021/07/12/Trie%E6%A0%91/</url>
+    
+    <content type="html"><![CDATA[<p>Trie，又称前缀树或字典树，是一种有序树，用于保存关联数组，其中的键通常是字符串</p><p>通过共享前缀空间来节约存储空间</p><h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a><strong>性质</strong></h3><ul><li>根节点不包含字符，除根节点意外每个节点只包含一个字符</li><li>从根节点到某一个节点，路径上经过的字符连接起来，为该节点对应的字符串</li><li>每个节点的所有子节点包含的字符串不相同</li></ul><hr><p><img src="/2021/07/12/Trie%E6%A0%91/1.png"></p><p>红色的结点为结束标记，表示ab也是存储的一个串。</p><h3 id="应用"><a href="#应用" class="headerlink" title="应用"></a><strong>应用</strong></h3><p>​    最大的特点就是利用了字符串的公共前缀，像google、baidu搜索词条的时候，推荐相关信息</p><p>​    Trie树实现敏感词过滤：</p><p>1、先把你给我的三个敏感词：“de”, “bca”, “bcf” 建立一颗 trie 树</p><p><img src="/2021/07/12/Trie%E6%A0%91/2.png"></p><p>2、接着我们可以采用三个指针来遍历</p><p><img src="/2021/07/12/Trie%E6%A0%91/3.png"></p><p>然后从字符串的 a 开始，检测有没有以 a 作为前缀的敏感词，直接判断 p1 的孩子节点中是否有 a 这个节点就可以了，显然这里没有。接着把指针 p2 和 p3 向右移动一格</p><p><img src="/2021/07/12/Trie%E6%A0%91/4.png"></p><p>然后从字符串 b 开始查找，看看是否有以 b 作为前缀的字符串，p1 的孩子节点中有 b，这时，<strong>我们把 p1 指向节点 b，p2 向右移动一格，不过，p3不动</strong></p><p><img src="/2021/07/12/Trie%E6%A0%91/5.png"></p><p>判断 p1 的孩子节点中是否存在 p2 指向的字符c，显然有。我们把 p1 指向节点 c，p2 向右移动一格，p3不动。</p><p><img src="/2021/07/12/Trie%E6%A0%91/4.png"></p><p>判断 p1 的孩子节点中是否存在 p2 指向的字符d，这里没有。这意味着，<strong>不存在以字符b作为前缀的敏感词</strong>。这时我们把p2和p3都移向字符c，p1 还是还原到最开始指向 root</p><p><img src="/2021/07/12/Trie%E6%A0%91/5.png"></p><p>和前面的步骤一样，判断有没以 c 作为前缀的字符串，显然这里没有，所以把 p2 和 p3 移到字符 d。</p><p><img src="/2021/07/12/Trie%E6%A0%91/6.png"></p><p>然后从字符串 d 开始查找，看看是否有以 d 作为前缀的字符串，p1 的孩子节点中有 d，这时，<strong>我们把 p1 指向节点 b，p2 向右移动一格，不过，p3和刚才一样不动</strong></p><p><img src="/2021/07/12/Trie%E6%A0%91/7.png"></p><p>判断 p1 的孩子节点中是否存在 p2 指向的字符e，显然有。我们把 p1 指向节点  e，并且，这里e是最后一个节点了，查找结束，所以存在敏感词de，即 p3 和 p2 这个区间指向的就是敏感词了，把 p2 和 p3  指向的区间那些字符替换成 *。并且把 p2 和 p3 移向字符 f</p><p><img src="/2021/07/12/Trie%E6%A0%91/8.png"></p><p>接着还是重复同样的步骤，知道 p3 指向最后一个字符</p><p><img src="/2021/07/12/Trie%E6%A0%91/9.png"></p><hr><h3 id="时间复杂度"><a href="#时间复杂度" class="headerlink" title="时间复杂度"></a><strong>时间复杂度</strong></h3><p>如果敏感词长度为m，则每个敏感词查找为O（m），字符串长度为n，那么需要遍历n遍，为O(m*n)。</p><p>敏感词Trie树建立：如果有t个敏感词，O(t * m)</p><hr><h3 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a><strong>如何实现</strong></h3><p>如果使用C++的话，我会使用unordered_set，一方面，可以自动去重，查找速度快；另一方面每个结点的子结点数目未知。</p><hr><h3 id="与KMP算法的比较"><a href="#与KMP算法的比较" class="headerlink" title="与KMP算法的比较"></a><strong>与KMP算法的比较</strong></h3><p>相比于KMP算法O（t * （m+n）），确实kmp快，但是Trie树一劳永逸，建立之后可以重复使用，而kmp算法要维护next数组，next数组根据敏感词建立，敏感词比较多的时候得不偿失。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>Data Structure</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>lambda</title>
+    <link href="/2021/07/05/lambda/"/>
+    <url>/2021/07/05/lambda/</url>
+    
+    <content type="html"><![CDATA[<p>lambda 表达式有如下的一些优点：</p><figure class="highlight"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs">声明式的编程风格：就地匿名定义目标函数或函数对象，不需要额外写一个命名函数或函数对象。<br>简洁：避免了代码膨胀和功能分散，让开发更加高效。<br>在需要的时间和地点实现功能闭包，使程序更加灵活。<br></code></pre></div></td></tr></table></figure><p>lambda 表达式定义了一个匿名函数，并且可以捕获一定范围内的变量。lambda 表达式的语法形式简单归纳如下：</p><figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less"><span class="hljs-selector-attr">[capture]</span>(params) <span class="hljs-selector-tag">opt</span> <span class="hljs-selector-tag">-</span>&gt; <span class="hljs-selector-tag">ret</span> &#123;<span class="hljs-selector-tag">body</span>;&#125;;<br></code></pre></div></td></tr></table></figure><p>其中 capture 是捕获列表，params 是参数列表，opt 是函数选项，ret 是返回值类型，body 是函数体。</p><figure class="highlight less"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs less">捕获列表 <span class="hljs-selector-attr">[]</span>: 捕获一定范围内的变量<br><br>参数列表 (): 和普通函数的参数列表一样，如果没有参数参数列表可以省略不写。<br></code></pre></div></td></tr></table></figure><p>在匿名函数内部，需要通过 lambda 表达式的捕获列表控制如何捕获外部变量，以及访问哪些变量。默认状态下 lambda 表达式无法修改通过复制方式捕获外部变量，如果希望修改这些外部变量，需要通过引用的方式进行捕获。</p><p>lambda 表达式的捕获列表可以捕获一定范围内的变量，具体使用方式如下：</p><figure class="highlight angelscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs angelscript"><span class="hljs-string">[]</span> - 不捕捉任何变量<br><span class="hljs-string">[&amp;]</span> - 捕获外部作用域中所有变量，并作为引用在函数体内使用 (按引用捕获)<br><span class="hljs-string">[=]</span> - 捕获外部作用域中所有变量，并作为副本在函数体内使用 (按值捕获)<br>    拷贝的副本在匿名函数体内部是只读的<br><span class="hljs-string">[=, &amp;foo]</span> - 按值捕获外部作用域中所有变量，并按照引用捕获外部变量 foo<br><span class="hljs-string">[bar]</span> - 按值捕获 bar 变量，同时不捕获其他变量<br><span class="hljs-string">[&amp;bar]</span> - 按引用捕获 bar 变量，同时不捕获其他变量<br><span class="hljs-string">[this]</span> - 捕获当前类中的 <span class="hljs-keyword">this</span> 指针<br>    让 lambda 表达式拥有和当前类成员函数同样的访问权限<br>    如果已经使用了 &amp; 或者 =, 默认添加此选项<br></code></pre></div></td></tr></table></figure><p>不指定 lambda 表达式的返回值，编译器会根据 return 语句自动推导返回值的类型，但需要注意的是 labmda表达式不能通过列表初始化自动推导出返回值类型。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>C++</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Git工具</title>
+    <link href="/2021/07/03/Git%E5%B7%A5%E5%85%B7/"/>
+    <url>/2021/07/03/Git%E5%B7%A5%E5%85%B7/</url>
+    
+    <content type="html"><![CDATA[<figure class="highlight livecodeserver"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs livecodeserver">git init <span class="hljs-comment">//初始化仓库</span><br>git init newrepo<span class="hljs-comment"> //将制定文件夹作为Git仓库</span><br>git <span class="hljs-built_in">add</span> filename<span class="hljs-comment"> //添加文件</span><br>git rm <span class="hljs-built_in">file</span><span class="hljs-comment"> //删除文件</span><br>git commit -m <span class="hljs-string">&quot;Adding files&quot;</span><span class="hljs-comment"> //提交版本</span><br>git commit -<span class="hljs-keyword">a</span> -m <span class="hljs-string">&quot;Changed some files&quot;</span><br><br>git clone ssh://example.com/~/www/project.git<span class="hljs-comment"> //克隆一个库</span><br>git push ssh://example.com/~/www/project.git<span class="hljs-comment"> //推送到服务器</span><br><br>git branch branchName<span class="hljs-comment"> //创建分支</span><br>git branch -d branchName<span class="hljs-comment"> //删除分支</span><br>git checkout branchName<span class="hljs-comment"> //切换分支</span><br>第一个分支叫master<br>git checkout master<br><br>将分支合并到master上<br>git checkout master<br>git <span class="hljs-built_in">merge</span> branchName<br><br>在合并改动之前，你可以使用如下命令预览差异：<br>git diff &lt;source_branch&gt; &lt;target_branch&gt;<br><br>为软件发布创建标签是推荐的。这个概念早已存在，在 SVN 中也有。你可以执行如下命令创建一个叫做 <span class="hljs-number">1.0</span><span class="hljs-number">.0</span> 的标签：<br>git tag <span class="hljs-number">1.0</span><span class="hljs-number">.0</span> <span class="hljs-number">1</span>b2e1d63ff<br><br>git <span class="hljs-built_in">log</span><br>你也可以使用少一点的提交 ID 前几位，只要它的指向具有唯一性。<br><br>假如你操作失误（当然，这最好永远不要发生），你可以使用如下命令替换掉本地改动：<br>git checkout <span class="hljs-comment">-- &lt;filename&gt;</span><br>此命令会使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到暂存区的改动以及新文件都不会受到影响。<br><br>假如你想丢弃你在本地的所有改动与提交，可以到服务器上获取最新的版本历史，并将你本地主分支指向它：<br>git fetch origin<br>git reset <span class="hljs-comment">--hard origin/master </span><br><br>git pull 和 git fetch是有区别的<br>git fetch相当于是从远程获取最新版本到本地，不会自动<span class="hljs-built_in">merge</span><br>git pull相当于是从远程获取最新版本并<span class="hljs-built_in">merge</span>到本地<br><br></code></pre></div></td></tr></table></figure><p>本地仓库由git维护三颗树。第一个是“工作目录”，实际存储的文件；第二个是暂存取（Index），临时保存改动；最后是HEAD，指向最后一次提交的结果</p><h2 id="Git三大特色：分支、暂存取、工作流"><a href="#Git三大特色：分支、暂存取、工作流" class="headerlink" title="Git三大特色：分支、暂存取、工作流"></a>Git三大特色：分支、暂存取、工作流</h2><h3 id="Git分支："><a href="#Git分支：" class="headerlink" title="Git分支："></a>Git分支：</h3><p>​    merge方式：</p><h3 id="Git大概可以分为三个区：工作区-暂存区和版本库"><a href="#Git大概可以分为三个区：工作区-暂存区和版本库" class="headerlink" title="Git大概可以分为三个区：工作区,暂存区和版本库"></a>Git大概可以分为三个区：工作区,暂存区和版本库</h3><ul><li><p>工作区：直接编写代码的地方</p></li><li><p>暂存取：数据暂时存储的区域，连接工作区和版本库</p></li><li><p>版本库：存放已经提交的数据，push 的时候，就是把这个区的数据 push 到远程仓库了</p><p><img src="/2021/07/03/Git%E5%B7%A5%E5%85%B7/1.png"></p></li></ul><p><img src="/2021/07/03/Git%E5%B7%A5%E5%85%B7/2.png"></p><p><img src="/2021/07/03/Git%E5%B7%A5%E5%85%B7/3.png"></p><p>Git 工作流</p><p>​    工作流就是一种工作的方式，目前主流：Git Flow、Github Flow、Gitlab Flow</p><p>​    <strong>Github工作流</strong></p><p>​     GitHub Flow 推荐做法是只有一个主分支 master，团队成员们的分支代码通过 pull Request 来合并到 master 上</p><p>​    特色Pull Request：</p><figure class="highlight asciidoc"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs asciidoc"><span class="hljs-bullet">*    </span>可以很好控制分支合并权限<br><span class="hljs-bullet">*    </span>问题讨论 或者 寻求其他小伙伴们的帮助<br><span class="hljs-bullet">*    </span>代码 Review<br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    <categories>
+      
+      <category>指令速查</category>
+      
+    </categories>
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>Laplacian-Steered Neural Style Transfer</title>
+    <link href="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/"/>
+    <url>/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Laplacian-Steered-Neural-Style-Transfer"><a href="#Laplacian-Steered-Neural-Style-Transfer" class="headerlink" title="Laplacian-Steered Neural Style Transfer"></a>Laplacian-Steered Neural Style Transfer</h2><p><strong>传统的风格迁移项目中的问题：</strong>缺少内容图像的低级特征，而风格图像的低级特征主导了新图像的低级细节特征。因此，在合成图像中，图像内容的许多细节丢了，并且出现了很多伪像</p><p><strong>论文解决的问题：</strong>建议使用新的损失函数：*<strong>拉普拉斯损失来指导图像合成*</strong></p><p>介绍：由拉普拉斯算子生成的拉普拉斯矩阵在计算机视觉中广泛用于检测边缘和轮廓。拉普拉斯损失测量内容图像和新图像之间的拉普拉斯差异以及对应的细节结构差异，可以与传统的风格转换约束兼容。通过合并拉普拉斯损失，我们获得了神经样式转换的新优化目标，成为Lapstyle。最小化此目标将产生风格化的图像，该图像可以更好地保留内容图像的细节结构并消除伪影</p><p>拉普拉斯算子提取了一个拉普拉斯矩阵，该矩阵包括图像中对人类感知最为突出的二阶变化。这些二阶变化通常对应于细节结构</p><p><img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/1.png"></p><p><img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/2.png"></p><p>拉普拉斯损失是由两个拉普拉斯矩阵计算绝对平方差而来</p><p>拉普拉斯矩阵是由一个两层的固定的CNN来计算的，该网络由平均池化层和预先指定的卷积层组成 <a href="https://github.com/askerlee/lapstyle">https://github.com/askerlee/lapstyle</a> （源码）</p><p><strong>工作的贡献</strong></p><ul><li>提出了拉普拉斯损失</li><li>拉普拉斯损失是通过一个附加的CNN计算得到的</li><li>可以组合具有不同粒度的多个拉普拉斯损失，以捕获不同比例的图像细节结构</li></ul><hr><p><strong>拉普拉斯操作</strong>就是用<img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/3.png"></p><p>这么个卷积核来进行卷积，平滑的地方数值会小，但是边缘地带会被放大</p><p><strong>拉普拉斯损失</strong><img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/4.png"></p><p><img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/5.png"></p><p>总损失：<img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/6.png"></p><p>*<strong>在计算拉普拉斯损失的时候解决了两个问题：*</strong></p><ul><li><p>多通道上的拉普拉斯：输入的图像往往是RGB三通道，理想情况下，要检测边缘，应单独考虑每个通道，即每个通道与拉普拉斯滤波器卷积，产生三个拉普拉斯矩阵，在三个拉普拉斯矩阵中，任何一个都很大的情况下，表示边缘，无论其符号如何，为此，对于多通道的问题，最终的D 是 三个通道值绝对值之和。</p><p><img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/7.png"></p></li><li><p>通过池化层来平滑拉普拉斯矩阵结果</p></li></ul><p>此外，可以进行多个粒度的拉普拉斯操作，</p><p><img src="/2020/11/20/Laplacian-Steered-Neural-Style-Transfer/8.png"></p><hr><h3 id="具体实施"><a href="#具体实施" class="headerlink" title="具体实施"></a>具体实施</h3><p>拉普拉斯滤波器用3*3的固定权重的卷积层</p>]]></content>
     
     
     

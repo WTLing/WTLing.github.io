@@ -16,21 +16,23 @@
   <meta name="description" content="">
   <meta name="author" content="ZTDXMC">
   <meta name="keywords" content="">
-  <meta name="description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+  <meta name="description" content="MAML存在很多问题 训练时不问题定MAML的外循环涉及通过内存换多次反响传播导数，仅有此一点就可能导致梯度问题。然而，模型的框架进一步加剧了梯度的问题，这是一个没有skip-connection的4层卷积网络。缺乏任何跳连意味着每个梯度都必须乘以相同的参数集，在多次反向传播后，展开网络的大深度结构和缺乏跳连会分别导致梯度爆炸和梯度消失  对网络结构很敏感 有很多超参数需要调 耗时耗算力梯度更新">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工具们">
-<meta property="og:url" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/index.html">
+<meta property="og:title" content="How To Train Your MAML">
+<meta property="og:url" content="http://example.com/2021/10/23/How-To-Train-Your-MAML/index.html">
 <meta property="og:site_name" content="Tony的窝点">
-<meta property="og:description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+<meta property="og:description" content="MAML存在很多问题 训练时不问题定MAML的外循环涉及通过内存换多次反响传播导数，仅有此一点就可能导致梯度问题。然而，模型的框架进一步加剧了梯度的问题，这是一个没有skip-connection的4层卷积网络。缺乏任何跳连意味着每个梯度都必须乘以相同的参数集，在多次反向传播后，展开网络的大深度结构和缺乏跳连会分别导致梯度爆炸和梯度消失  对网络结构很敏感 有很多超参数需要调 耗时耗算力梯度更新">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
-<meta property="article:published_time" content="2021-11-17T01:48:53.000Z">
-<meta property="article:modified_time" content="2021-11-23T16:37:47.613Z">
+<meta property="og:image" content="http://example.com/2021/10/23/How-To-Train-Your-MAML/1.png">
+<meta property="og:image" content="http://example.com/2021/10/23/How-To-Train-Your-MAML/2.png">
+<meta property="article:published_time" content="2021-10-23T13:53:05.000Z">
+<meta property="article:modified_time" content="2021-11-23T15:58:46.680Z">
 <meta property="article:author" content="ZTDXMC">
+<meta property="article:tag" content="Meta Learning">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
+<meta name="twitter:image" content="http://example.com/2021/10/23/How-To-Train-Your-MAML/1.png">
   
-  <title>工具们 - Tony的窝点</title>
+  <title>How To Train Your MAML - Tony的窝点</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -168,7 +170,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="工具们">
+            <span class="h2" id="subtitle" title="How To Train Your MAML">
               
             </span>
 
@@ -178,8 +180,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-17 09:48" pubdate>
-        2021年11月17日 上午
+      <time datetime="2021-10-23 21:53" pubdate>
+        2021年10月23日 晚上
       </time>
     </span>
   
@@ -189,7 +191,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      493 字
+      925 字
     </span>
   
 
@@ -198,7 +200,7 @@
       <i class="iconfont icon-clock-fill"></i>
       
       
-      2 分钟
+      3 分钟
     </span>
   
 
@@ -227,38 +229,48 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">工具们</h1>
+            <h1 style="display: none">How To Train Your MAML</h1>
             
             <div class="markdown-body">
-              <h4 id="下载工具-https-www-motrix-app-zh-CN"><a href="#下载工具-https-www-motrix-app-zh-CN" class="headerlink" title="下载工具:https://www.motrix.app/zh-CN/"></a><strong>下载工具</strong>:<a target="_blank" rel="noopener" href="https://www.motrix.app/zh-CN/">https://www.motrix.app/zh-CN/</a></h4><h4 id="视频素材管理工具：https-www-ysjf-com-gate"><a href="#视频素材管理工具：https-www-ysjf-com-gate" class="headerlink" title="视频素材管理工具：https://www.ysjf.com/gate"></a><strong>视频素材管理工具</strong>：<a target="_blank" rel="noopener" href="https://www.ysjf.com/gate">https://www.ysjf.com/gate</a></h4><h4 id="数学公式ORC识别-Mathpix-Snip：https-mathpix-com"><a href="#数学公式ORC识别-Mathpix-Snip：https-mathpix-com" class="headerlink" title="数学公式ORC识别 Mathpix Snip：https://mathpix.com"></a><strong>数学公式ORC识别 Mathpix Snip</strong>：<a target="_blank" rel="noopener" href="https://mathpix.com/">https://mathpix.com</a></h4><h4 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a><strong>安装brew</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">/bin/zsh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span><br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a><strong>安装node</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">brew install node<br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo<br></code></pre></div></td></tr></table></figure>
-
-<p>初始化hexo目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> blog<br>hexo init<br></code></pre></div></td></tr></table></figure>
-
-<p>显示数学公式</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo-filter-mathjax<br>hexo clean<br></code></pre></div></td></tr></table></figure>
-
-<p>显示图片</p>
+              <p><img src="/2021/10/23/How-To-Train-Your-MAML/1.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="MAML存在很多问题"><a href="#MAML存在很多问题" class="headerlink" title="MAML存在很多问题"></a>MAML存在很多问题</h2><ul>
+<li><h3 id="训练时不问题定"><a href="#训练时不问题定" class="headerlink" title="训练时不问题定"></a>训练时不问题定</h3><p>MAML的外循环涉及通过内存换多次反响传播导数，仅有此一点就可能导致梯度问题。然而，模型的框架进一步加剧了梯度的问题，这是一个没有skip-connection的4层卷积网络。缺乏任何跳连意味着每个梯度都必须乘以相同的参数集，在多次反向传播后，展开网络的大深度结构和缺乏跳连会分别导致梯度爆炸和梯度消失</p>
+</li>
+<li><h3 id="对网络结构很敏感"><a href="#对网络结构很敏感" class="headerlink" title="对网络结构很敏感"></a>对网络结构很敏感</h3></li>
+<li><h3 id="有很多超参数需要调"><a href="#有很多超参数需要调" class="headerlink" title="有很多超参数需要调"></a>有很多超参数需要调</h3></li>
+<li><h3 id="耗时耗算力"><a href="#耗时耗算力" class="headerlink" title="耗时耗算力"></a>耗时耗算力</h3><p>梯度更新步骤涉及到计算二阶梯度，这计算非常耗时。之前的一些方法如Reptile，结果各不相同，在某些情况下超过MAML，在其他情况下产生的结果不如MAML。尚未提出在不牺牲泛化性能的同时减少计算时间的方法</p>
+</li>
+<li><h3 id="所有Inner-Loop共享相同的Learning-Rate"><a href="#所有Inner-Loop共享相同的Learning-Rate" class="headerlink" title="所有Inner Loop共享相同的Learning Rate"></a>所有Inner Loop共享相同的Learning Rate</h3><p>Inner Loop中所有参数和所有更新步骤共享相同学习率，这样造成问题。固定学习率需要进行多次超参数搜索才能找到特定数据集的正确学习率，这个过程的计算成本可能非常高</p>
+</li>
+<li><h3 id="Outer-Loop-Learning-Rate-是固定的"><a href="#Outer-Loop-Learning-Rate-是固定的" class="headerlink" title="Outer Loop Learning Rate 是固定的"></a>Outer Loop Learning Rate 是固定的</h3><p>事实证明，使用步进或余弦函数对学习率进行退火对于在多种设置中实现好的泛化性至关重要。因此我们推测使用静态学习率会降低MAML的泛化性能，也可能是优化速度较慢的原因</p>
+</li>
+</ul>
+<h2 id="本文解决的问题"><a href="#本文解决的问题" class="headerlink" title="本文解决的问题"></a>本文解决的问题</h2><p>提出多种对MAML的修改，提高了稳定性，同时在加速&amp;减少计算的前提下，提高了性能，称为MAML++</p>
+<h2 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h2><h3 id="梯度不稳定性→多步损失优化-MSL"><a href="#梯度不稳定性→多步损失优化-MSL" class="headerlink" title="梯度不稳定性→多步损失优化(MSL)"></a>梯度不稳定性→多步损失优化(MSL)</h3><p><img src="/2021/10/23/How-To-Train-Your-MAML/2.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></p>
+<p>  就是改变任务的权重，一开始task权重设小，epoch变大跟着慢慢变大</p>
 </blockquote>
-<h4 id="Npx搭建静态服务器局域网传数据"><a href="#Npx搭建静态服务器局域网传数据" class="headerlink" title="Npx搭建静态服务器局域网传数据"></a>Npx搭建静态服务器局域网传数据</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 指定文件夹下<br>npx http-server<br></code></pre></div></td></tr></table></figure>
-
-<p>打开弹出的网址后，找到指定文件下载就好</p>
-<img src="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
-
-<h4 id="MAC添加全局变量"><a href="#MAC添加全局变量" class="headerlink" title="MAC添加全局变量"></a>MAC添加全局变量</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo vi /etc/paths <br><span class="hljs-built_in">source</span> ~/.bash_profile 生效<br></code></pre></div></td></tr></table></figure>
-
-
+<h3 id="二阶导数成本→导数退火DA"><a href="#二阶导数成本→导数退火DA" class="headerlink" title="二阶导数成本→导数退火DA"></a>二阶导数成本→导数退火DA</h3><p>MAML在整个训练阶段都采用了一阶近似，我们随着训练的进行对微分阶数进行退火。如在训练阶段的前50个epochs使用一阶梯度，然后在训练阶段的其余时间使用二阶梯度。</p>
+<h3 id="缺少Batch-Normalization统计信息累积→Per-Step-Batch-Normalization运行统计信息（BNRS）"><a href="#缺少Batch-Normalization统计信息累积→Per-Step-Batch-Normalization运行统计信息（BNRS）" class="headerlink" title="缺少Batch Normalization统计信息累积→Per-Step Batch Normalization运行统计信息（BNRS）"></a>缺少Batch Normalization统计信息累积→Per-Step Batch Normalization运行统计信息（BNRS）</h3><h3 id="共享（跨步骤）Batch-Normalization偏差→Per-Step-Batch-Normalization权重和偏差（BNWB）"><a href="#共享（跨步骤）Batch-Normalization偏差→Per-Step-Batch-Normalization权重和偏差（BNWB）" class="headerlink" title="共享（跨步骤）Batch Normalization偏差→Per-Step Batch Normalization权重和偏差（BNWB）"></a>共享（跨步骤）Batch Normalization偏差→Per-Step Batch Normalization权重和偏差（BNWB）</h3><h3 id="共享的inner-loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）"><a href="#共享的inner-loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）" class="headerlink" title="共享的inner loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）"></a>共享的inner loop学习率（跨步和跨参数）→学习每层每步学习率和梯度方向（LSLR）</h3><h3 id="固定outer-loop学习率→元优化器学习率的余弦退火（CA）"><a href="#固定outer-loop学习率→元优化器学习率的余弦退火（CA）" class="headerlink" title="固定outer loop学习率→元优化器学习率的余弦退火（CA）"></a>固定outer loop学习率→元优化器学习率的余弦退火（CA）</h3>
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/FewShot-Learning/">FewShot Learning</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Meta-Learning/">Meta Learning</a>
+                    
+                  </div>
                 
               </div>
               
@@ -267,9 +279,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/22/%E8%BE%BE%E8%8A%AC%E5%A5%87/">
+                      <a href="/2021/10/25/Meta-Learning-without-Memorization/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">达芬奇</span>
+                        <span class="hidden-mobile">Meta-Learning without Memorization</span>
                         <span class="visible-mobile">Pre</span>
                       </a>
                     
@@ -277,8 +289,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/12/Pytorch-Tips/">
-                        <span class="hidden-mobile">Pytorch Tips</span>
+                      <a href="/2021/10/23/Win-to-go/">
+                        <span class="hidden-mobile">Win to go</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

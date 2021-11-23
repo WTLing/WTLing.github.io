@@ -16,18 +16,37 @@
   <meta name="description" content="">
   <meta name="author" content="ZTDXMC">
   <meta name="keywords" content="">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="All">
-<meta property="og:url" content="http://example.com/archives/2021/11/index.html">
+  <meta name="description" content="2021.11.3 8:00 PM 交替Train ANIL BOIL，每次train到收敛再切换 固定Head和后几层Conv，强迫Adaptation的改变提前  2021.11.5 10:00 AM 把300Epoch的BOIL拿来接着TrainANIL BOIL收敛之后，再Train时，在Out loop里面把Body的lr变小，Head变大 把Adaption前后无变化的作为死记硬背 降">
+<meta property="og:type" content="article">
+<meta property="og:title" content="开会心得">
+<meta property="og:url" content="http://example.com/2021/11/05/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/index.html">
 <meta property="og:site_name" content="Tony的窝点">
+<meta property="og:description" content="2021.11.3 8:00 PM 交替Train ANIL BOIL，每次train到收敛再切换 固定Head和后几层Conv，强迫Adaptation的改变提前  2021.11.5 10:00 AM 把300Epoch的BOIL拿来接着TrainANIL BOIL收敛之后，再Train时，在Out loop里面把Body的lr变小，Head变大 把Adaption前后无变化的作为死记硬背 降">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-11-05T13:59:26.000Z">
+<meta property="article:modified_time" content="2021-11-23T15:59:11.586Z">
 <meta property="article:author" content="ZTDXMC">
 <meta name="twitter:card" content="summary_large_image">
   
-  <title>All - Tony的窝点</title>
+  <title>开会心得 - Tony的窝点</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -58,7 +77,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -147,9 +166,43 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="ALL">
+            <span class="h2" id="subtitle" title="开会心得">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-05 21:59" pubdate>
+        2021年11月5日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      203 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      1 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -162,70 +215,120 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 20 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2021</p>
-    
-    <a href="/2021/11/23/Stock-v1/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Stock_v1</span>
-      <time style="float: right;">11-23</time>
-    </a>
-  
-    
-    <a href="/2021/11/22/%E8%BE%BE%E8%8A%AC%E5%A5%87/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">达芬奇</span>
-      <time style="float: right;">11-22</time>
-    </a>
-  
-    
-    <a href="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">工具们</span>
-      <time style="float: right;">11-17</time>
-    </a>
-  
-    
-    <a href="/2021/11/12/Pytorch-Tips/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Pytorch Tips</span>
-      <time style="float: right;">11-12</time>
-    </a>
-  
-    
-    <a href="/2021/11/05/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">开会心得</span>
-      <time style="float: right;">11-05</time>
-    </a>
-  
-    
-    <a href="/2021/11/03/Final-Cut-Pro/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">Final Cut Pro</span>
-      <time style="float: right;">11-03</time>
-    </a>
-  
-</div>
 
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">开会心得</h1>
+            
+            <div class="markdown-body">
+              <h3 id="2021-11-3-8-00-PM"><a href="#2021-11-3-8-00-PM" class="headerlink" title="2021.11.3 8:00 PM"></a>2021.11.3 8:00 PM</h3><ul>
+<li>交替Train ANIL BOIL，每次train到收敛再切换</li>
+<li>固定Head和后几层Conv，强迫Adaptation的改变提前</li>
+</ul>
+<h3 id="2021-11-5-10-00-AM"><a href="#2021-11-5-10-00-AM" class="headerlink" title="2021.11.5 10:00 AM"></a>2021.11.5 10:00 AM</h3><ul>
+<li>把300Epoch的BOIL拿来接着TrainANIL</li>
+<li>BOIL收敛之后，再Train时，在Out loop里面把Body的lr变小，Head变大</li>
+<li>把Adaption前后无变化的作为死记硬背</li>
+<li>降噪，把无关的东西删掉，只学重要的东西</li>
+</ul>
 
-
-
-
-              </div>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/FewShot-Learning/">FewShot Learning</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/12/Pytorch-Tips/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Pytorch Tips</span>
+                        <span class="visible-mobile">Pre</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/03/Final-Cut-Pro/">
+                        <span class="hidden-mobile">Final Cut Pro</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"NqfCe9N1ldsKnFmEvujkDdSk-MdYXbMMI","appKey":"B34Gii3HEWEBa3njgz1wmchx","path":"window.location.pathname","placeholder":"来说哈子","avatar":"retro","meta":["nick"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Toc</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -309,6 +412,19 @@
 
 
 
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
 
 
 
@@ -328,6 +444,48 @@
 
 
 
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
 
 
 

@@ -16,21 +16,28 @@
   <meta name="description" content="">
   <meta name="author" content="ZTDXMC">
   <meta name="keywords" content="">
-  <meta name="description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+  <meta name="description" content="拒绝死记硬背，元学习才能学会学习  之前元学习算法存在的问题：元学习解决unseen task通过：  从过去的task中学习 从新任务的training data适应  两者都很重要！ 但是，由于task的制作不合理，无法做到完全的互斥，导致训练的元学习器是通过记忆的方式来解决训练集里的任务，而失去、减弱了解决新任务的能力。 称之为“记忆问题”（Memorization Problem）">
 <meta property="og:type" content="article">
-<meta property="og:title" content="工具们">
-<meta property="og:url" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/index.html">
+<meta property="og:title" content="Meta-Learning without Memorization">
+<meta property="og:url" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/index.html">
 <meta property="og:site_name" content="Tony的窝点">
-<meta property="og:description" content="下载工具:https:&#x2F;&#x2F;www.motrix.app&#x2F;zh-CN&#x2F;视频素材管理工具：https:&#x2F;&#x2F;www.ysjf.com&#x2F;gate数学公式ORC识别 Mathpix Snip：https:&#x2F;&#x2F;mathpix.com安装brew1&#x2F;bin&#x2F;zsh -c &quot;$(curl -fsSL https:&#x2F;&#x2F;gitee.com&#x2F;cunkai&#x2F;HomebrewCN&#x2F;raw&#x2F;master&#x2F;Homeb">
+<meta property="og:description" content="拒绝死记硬背，元学习才能学会学习  之前元学习算法存在的问题：元学习解决unseen task通过：  从过去的task中学习 从新任务的training data适应  两者都很重要！ 但是，由于task的制作不合理，无法做到完全的互斥，导致训练的元学习器是通过记忆的方式来解决训练集里的任务，而失去、减弱了解决新任务的能力。 称之为“记忆问题”（Memorization Problem）">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
-<meta property="article:published_time" content="2021-11-17T01:48:53.000Z">
-<meta property="article:modified_time" content="2021-11-23T16:37:47.613Z">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/1.png">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/2.png">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/4.png">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/3.png">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/6.png">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/7.png">
+<meta property="og:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/8.png">
+<meta property="article:published_time" content="2021-10-25T13:55:53.000Z">
+<meta property="article:modified_time" content="2021-11-23T15:59:03.864Z">
 <meta property="article:author" content="ZTDXMC">
+<meta property="article:tag" content="Meta Learning">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png">
+<meta name="twitter:image" content="http://example.com/2021/10/25/Meta-Learning-without-Memorization/1.png">
   
-  <title>工具们 - Tony的窝点</title>
+  <title>Meta-Learning without Memorization - Tony的窝点</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
@@ -168,7 +175,7 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="工具们">
+            <span class="h2" id="subtitle" title="Meta-Learning without Memorization">
               
             </span>
 
@@ -178,8 +185,8 @@
   
     <span class="post-meta">
       <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-11-17 09:48" pubdate>
-        2021年11月17日 上午
+      <time datetime="2021-10-25 21:55" pubdate>
+        2021年10月25日 晚上
       </time>
     </span>
   
@@ -189,7 +196,7 @@
   
     <span class="post-meta mr-2">
       <i class="iconfont icon-chart"></i>
-      493 字
+      741 字
     </span>
   
 
@@ -227,38 +234,54 @@
         <div class="py-5" id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">工具们</h1>
+            <h1 style="display: none">Meta-Learning without Memorization</h1>
             
             <div class="markdown-body">
-              <h4 id="下载工具-https-www-motrix-app-zh-CN"><a href="#下载工具-https-www-motrix-app-zh-CN" class="headerlink" title="下载工具:https://www.motrix.app/zh-CN/"></a><strong>下载工具</strong>:<a target="_blank" rel="noopener" href="https://www.motrix.app/zh-CN/">https://www.motrix.app/zh-CN/</a></h4><h4 id="视频素材管理工具：https-www-ysjf-com-gate"><a href="#视频素材管理工具：https-www-ysjf-com-gate" class="headerlink" title="视频素材管理工具：https://www.ysjf.com/gate"></a><strong>视频素材管理工具</strong>：<a target="_blank" rel="noopener" href="https://www.ysjf.com/gate">https://www.ysjf.com/gate</a></h4><h4 id="数学公式ORC识别-Mathpix-Snip：https-mathpix-com"><a href="#数学公式ORC识别-Mathpix-Snip：https-mathpix-com" class="headerlink" title="数学公式ORC识别 Mathpix Snip：https://mathpix.com"></a><strong>数学公式ORC识别 Mathpix Snip</strong>：<a target="_blank" rel="noopener" href="https://mathpix.com/">https://mathpix.com</a></h4><h4 id="安装brew"><a href="#安装brew" class="headerlink" title="安装brew"></a><strong>安装brew</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">/bin/zsh -c <span class="hljs-string">&quot;<span class="hljs-subst">$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)</span>&quot;</span><br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装node"><a href="#安装node" class="headerlink" title="安装node"></a><strong>安装node</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">brew install node<br></code></pre></div></td></tr></table></figure>
-
-<h4 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a><strong>安装Hexo</strong></h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo<br></code></pre></div></td></tr></table></figure>
-
-<p>初始化hexo目录</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> blog<br>hexo init<br></code></pre></div></td></tr></table></figure>
-
-<p>显示数学公式</p>
-<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">npm install hexo-filter-mathjax<br>hexo clean<br></code></pre></div></td></tr></table></figure>
-
-<p>显示图片</p>
+              <p><img src="/2021/10/25/Meta-Learning-without-Memorization/1.png" srcset="/img/loading.gif" lazyload></p>
 <blockquote>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xjm850552586/article/details/84101345">https://blog.csdn.net/xjm850552586/article/details/84101345</a></p>
+<p>  <strong>拒绝死记硬背，元学习才能学会学习</strong></p>
 </blockquote>
-<h4 id="Npx搭建静态服务器局域网传数据"><a href="#Npx搭建静态服务器局域网传数据" class="headerlink" title="Npx搭建静态服务器局域网传数据"></a>Npx搭建静态服务器局域网传数据</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash"><span class="hljs-built_in">cd</span> 指定文件夹下<br>npx http-server<br></code></pre></div></td></tr></table></figure>
-
-<p>打开弹出的网址后，找到指定文件下载就好</p>
-<img src="/2021/11/17/%E5%B7%A5%E5%85%B7%E4%BB%AC/1.png" srcset="/img/loading.gif" lazyload style="zoom:50%;">
-
-<h4 id="MAC添加全局变量"><a href="#MAC添加全局变量" class="headerlink" title="MAC添加全局变量"></a>MAC添加全局变量</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">sudo vi /etc/paths <br><span class="hljs-built_in">source</span> ~/.bash_profile 生效<br></code></pre></div></td></tr></table></figure>
-
+<h3 id="之前元学习算法存在的问题："><a href="#之前元学习算法存在的问题：" class="headerlink" title="之前元学习算法存在的问题："></a>之前元学习算法存在的问题：</h3><p>元学习解决unseen task通过：</p>
+<ul>
+<li>从过去的task中学习</li>
+<li>从新任务的training data适应</li>
+</ul>
+<p>两者都很重要！</p>
+<p>但是，由于task的制作不合理，无法做到完全的互斥，导致训练的元学习器是通过记忆的方式来解决训练集里的任务，而失去、减弱了解决新任务的能力。</p>
+<p>称之为“记忆问题”（Memorization Problem）</p>
+<h3 id="什么是“记忆问题”"><a href="#什么是“记忆问题”" class="headerlink" title="什么是“记忆问题”"></a>什么是“记忆问题”</h3><h4 id="之前元学习制作task的过程"><a href="#之前元学习制作task的过程" class="headerlink" title="之前元学习制作task的过程"></a>之前元学习制作task的过程</h4><ul>
+<li>整个数据集分为Train、Valid、Test</li>
+<li>随机抽样多次，每次挑选出m-way类，每类再挑选n-shot张图片，制作成很多个M-way n-shot的Tasks</li>
+</ul>
+<p><img src="/2021/10/25/Meta-Learning-without-Memorization/2.png" srcset="/img/loading.gif" lazyload>记忆问题是一种Task-level OverFitting，在Training任务重表现的很好，但是新的任务，来自Valid或者Test时，模型就GG了。</p>
+<p>通俗的说，小学生做作业，上课老师通过几个物种的图片来教小学生辨认不同事物，小学生并没有学会如何辨认不同事物，二是直接把几个物种学会了，看似在区分这几个物种时很顺利，但是一旦遇到超纲的物种就完蛋。</p>
+<p>再通俗的说，医生按理来说是要根据患者的症状与处方之间学会无论来什么症状的患者都会开对应的药，但是医生只是单纯的记下了以前见过的患者开的什么药，没有学会Adaption，遇到有新症状的患者，就完蛋。</p>
+<p>回到问题本身，“记忆问题”说到底就是，在Training过程中，由于Support 和 Query标签是固定的，在Support中学习的样本，Query中都会见到，导致模型会直接记住样例，而不是学会如何Adaption。</p>
+<h3 id="问题公式化"><a href="#问题公式化" class="headerlink" title="问题公式化"></a>问题公式化</h3><p><img src="/2021/10/25/Meta-Learning-without-Memorization/4.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="如何解决"><a href="#如何解决" class="headerlink" title="如何解决"></a>如何解决</h3><h4 id="Meta-Regularization-on-Activation"><a href="#Meta-Regularization-on-Activation" class="headerlink" title="Meta-Regularization on Activation"></a>Meta-Regularization on Activation</h4><p><img src="/2021/10/25/Meta-Learning-without-Memorization/3.png" srcset="/img/loading.gif" lazyload><img src="/2021/10/25/Meta-Learning-without-Memorization/6.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="Meta-Regularization-on-Weights"><a href="#Meta-Regularization-on-Weights" class="headerlink" title="Meta-Regularization on Weights"></a>Meta-Regularization on Weights</h4><p><img src="/2021/10/25/Meta-Learning-without-Memorization/7.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="与MAML结合"><a href="#与MAML结合" class="headerlink" title="与MAML结合"></a>与MAML结合</h3><p><img src="/2021/10/25/Meta-Learning-without-Memorization/8.png" srcset="/img/loading.gif" lazyload></p>
+<hr>
 
             </div>
             <hr>
             <div>
               <div class="post-metas mb-3">
                 
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/FewShot-Learning/">FewShot Learning</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Meta-Learning/">Meta Learning</a>
+                    
+                  </div>
                 
               </div>
               
@@ -267,9 +290,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2021/11/22/%E8%BE%BE%E8%8A%AC%E5%A5%87/">
+                      <a href="/2021/11/03/Final-Cut-Pro/">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">达芬奇</span>
+                        <span class="hidden-mobile">Final Cut Pro</span>
                         <span class="visible-mobile">Pre</span>
                       </a>
                     
@@ -277,8 +300,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2021/11/12/Pytorch-Tips/">
-                        <span class="hidden-mobile">Pytorch Tips</span>
+                      <a href="/2021/10/23/How-To-Train-Your-MAML/">
+                        <span class="hidden-mobile">How To Train Your MAML</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
