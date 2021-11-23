@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/%E6%B5%B7%E7%BB%B5%E5%AE%9D%E5%AE%9D.png">
+  <link rel="icon" href="/img/%E6%B5%B7%E7%BB%B5%E5%AE%9D%E5%AE%9D.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ZTDXMC">
+  <meta name="keywords" content="">
+  <meta name="description" content="贡献 研究Representation change的作用 提出BOIL，在Inner Loop只更新Body部分参数，BOIL注重Representaion Change，不像MAML和ANIL重视Representation Reuse BOIL取得了很好的效果，尤其是在Cross-Domain问题上 BOIL在low-&#x2F;mid-level body上更倾向于Representation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BOIL">
+<meta property="og:url" content="http://example.com/2021/11/23/BOIL/index.html">
+<meta property="og:site_name" content="Tony的窝点">
+<meta property="og:description" content="贡献 研究Representation change的作用 提出BOIL，在Inner Loop只更新Body部分参数，BOIL注重Representaion Change，不像MAML和ANIL重视Representation Reuse BOIL取得了很好的效果，尤其是在Cross-Domain问题上 BOIL在low-&#x2F;mid-level body上更倾向于Representation">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/1.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/2.png">
+<meta property="og:image" content="https://wtling.github.io/2021/11/03/BOIL/2.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/3.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/4.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/5.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/6.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/7.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/8.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/10.png">
+<meta property="og:image" content="http://example.com/2021/11/23/BOIL/12.png">
+<meta property="article:published_time" content="2021-11-23T13:59:53.000Z">
+<meta property="article:modified_time" content="2021-11-23T14:40:48.136Z">
+<meta property="article:author" content="ZTDXMC">
+<meta property="article:tag" content="Meta Learning">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2021/11/23/BOIL/1.png">
+  
+  <title>BOIL - Tony的窝点</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"d311059c1b774ee7657bb02e7ecfd0fb","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tony的窝点</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                All
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Category
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tag
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E5%AF%8C%E5%A3%AB%E5%B1%B1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="BOIL">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-11-23 21:59" pubdate>
+        2021年11月23日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      811 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">BOIL</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/2021/11/23/BOIL/1.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/11/23/BOIL/2.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h3><ul>
+<li>研究Representation change的作用</li>
+<li>提出BOIL，在Inner Loop只更新Body部分参数，BOIL注重Representaion Change，不像MAML和ANIL重视Representation Reuse</li>
+<li>BOIL取得了很好的效果，尤其是在Cross-Domain问题上</li>
+<li>BOIL在low-/mid-level body上更倾向于Representation Reuse，在High-level body上更倾向于Representation Change</li>
+<li>For ResNet architectures, we propose a disconnection trick that  removes the back- propagation path of the last skip connection. The  disconnection trick strengthens <em>rep- resentation layer change</em> on the high-level body</li>
+</ul>
+<h3 id="BOIL"><a href="#BOIL" class="headerlink" title="BOIL"></a>BOIL<a target="_blank" rel="noopener" href="https://wtling.github.io/2021/11/03/BOIL/2.png"><img src="https://wtling.github.io/2021/11/03/BOIL/2.png" srcset="/img/loading.gif" lazyload alt="img"></a></h3><p>做法：Inner Loop中将Hed的学习率设为0</p>
+<h4 id="做了冻结Head的消融实验"><a href="#做了冻结Head的消融实验" class="headerlink" title="做了冻结Head的消融实验"></a>做了冻结Head的消融实验</h4><p><img src="/2021/11/23/BOIL/3.png" srcset="/img/loading.gif" lazyload></p>
+<p>​    <strong>说明冻结Head至关重要</strong></p>
+<h4 id="特征图的相似度"><a href="#特征图的相似度" class="headerlink" title="特征图的相似度"></a>特征图的相似度</h4><p><img src="/2021/11/23/BOIL/4.png" srcset="/img/loading.gif" lazyload></p>
+<p>结果分析：</p>
+<ul>
+<li>Fig2a Fig2b有相似的图像，支持特征重用，他们的特征图在adaptation前后无明显变化。表面MAML/ANIL极度依赖于Meta-initialized Body，而不是Task-specific Adaptation</li>
+<li>Fig2c有差异性的图像，支持特征改变，特征图在adaptation前后有明显变化，前三层支持特征重用，最后一个Conv支持特征改变</li>
+</ul>
+<p><img src="/2021/11/23/BOIL/5.png" srcset="/img/loading.gif" lazyload></p>
+<p><a target="_blank" rel="noopener" href="https://wtling.github.io/2021/11/03/BOIL/5.png">CKA of 4conv</a></p>
+<p><img src="/2021/11/23/BOIL/6.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="实验结果的分析"><a href="#实验结果的分析" class="headerlink" title="实验结果的分析"></a>实验结果的分析</h4><p><img src="/2021/11/23/BOIL/7.png" srcset="/img/loading.gif" lazyload>总结：MAML&amp;ANIL的meta-initialization在Adaptation前已经提供了充足的表征信息通过Body。相反BOIL没有得到充分的表征信息，所以body可以提取出更有效的表征信息</p>
+<h4 id="BOIL只需要很少的Adaptation次数"><a href="#BOIL只需要很少的Adaptation次数" class="headerlink" title="BOIL只需要很少的Adaptation次数"></a>BOIL只需要很少的Adaptation次数</h4><p><img src="/2021/11/23/BOIL/8.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="消融实验"><a href="#消融实验" class="headerlink" title="消融实验"></a>消融实验</h4><p><img src="/2021/11/23/BOIL/10.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2021/11/23/BOIL/12.png" srcset="/img/loading.gif" lazyload></p>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/FewShot-Learning/">FewShot Learning</a>
+                    
+                  </div>
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/Meta-Learning/">Meta Learning</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/11/23/ANIL/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ANIL</span>
+                        <span class="visible-mobile">Pre</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/11/23/%E5%BC%80%E4%BC%9A%E5%BF%83%E5%BE%97/">
+                        <span class="hidden-mobile">开会心得</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"NqfCe9N1ldsKnFmEvujkDdSk-MdYXbMMI","appKey":"B34Gii3HEWEBa3njgz1wmchx","path":"window.location.pathname","placeholder":"来说哈子","avatar":"retro","meta":["nick"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Toc</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://wtling.github.io" target="_blank" rel="nofollow noopener"><span>哈哈哈</span></a> <i class="iconfont icon-love"></i> <a href="https://wtling.github.io" target="_blank" rel="nofollow noopener"><span>哈哈哈</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d311059c1b774ee7657bb02e7ecfd0fb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
