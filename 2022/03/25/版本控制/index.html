@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/%E6%B5%B7%E7%BB%B5%E5%AE%9D%E5%AE%9D.png">
+  <link rel="icon" href="/img/%E6%B5%B7%E7%BB%B5%E5%AE%9D%E5%AE%9D.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="description" content="">
+  <meta name="author" content="ZTDXMC">
+  <meta name="keywords" content="">
+  <meta name="description" content="版本控制的起源：diff与patch diff简介：diff用来比较两个文件或者目录之间的差异 1$ diff -u left.c right.c patch简介：patch是diff的反向操作。diff差异结果可以保存为diff.txt，那么这个diff.txt就可以用来从left.c推算出right.c的内容，或者容right.c推算出left.c的内容 12345&#x2F;&#x2F;通过diff.txt，把">
+<meta property="og:type" content="article">
+<meta property="og:title" content="版本控制">
+<meta property="og:url" content="http://example.com/2022/03/25/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/index.html">
+<meta property="og:site_name" content="Tony的窝点">
+<meta property="og:description" content="版本控制的起源：diff与patch diff简介：diff用来比较两个文件或者目录之间的差异 1$ diff -u left.c right.c patch简介：patch是diff的反向操作。diff差异结果可以保存为diff.txt，那么这个diff.txt就可以用来从left.c推算出right.c的内容，或者容right.c推算出left.c的内容 12345&#x2F;&#x2F;通过diff.txt，把">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/03/25/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/1.png">
+<meta property="article:published_time" content="2022-03-25T09:26:33.000Z">
+<meta property="article:modified_time" content="2022-03-25T09:29:46.896Z">
+<meta property="article:author" content="ZTDXMC">
+<meta property="article:tag" content="雏鹰计划">
+<meta property="article:tag" content="Git">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/03/25/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/1.png">
+  
+  <title>版本控制 - Tony的窝点</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="/lib/hint/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_kmeydafke9r.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.8.12","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"baidu":"d311059c1b774ee7657bb02e7ecfd0fb","google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname"}},"search_path":"/local-search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Tony的窝点</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                Home
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                All
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                Category
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                Tag
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/%E5%AF%8C%E5%A3%AB%E5%B1%B1.jpg') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="版本控制">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-03-25 17:26" pubdate>
+        2022年3月25日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      3k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      10 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">版本控制</h1>
+            
+            <div class="markdown-body">
+              <h3 id="版本控制的起源：diff与patch"><a href="#版本控制的起源：diff与patch" class="headerlink" title="版本控制的起源：diff与patch"></a>版本控制的起源：diff与patch</h3><ul>
+<li><p>diff简介：diff用来比较两个文件或者目录之间的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">$ diff -u left.c right.c<br></code></pre></div></td></tr></table></figure></li>
+<li><p>patch简介：patch是diff的反向操作。diff差异结果可以保存为diff.txt，那么这个diff.txt就可以用来从left.c推算出right.c的内容，或者容right.c推算出left.c的内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">//通过diff.txt，把left.c变成right.c的内容<br>$ patch left.c diff.txt<br><br>//通过diff.txt，把right.c比噢按成原来的left.c的内容<br>$ patch -R right.c diff.txt<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<h3 id="CVS-amp-SVN：集中式版本控制工具"><a href="#CVS-amp-SVN：集中式版本控制工具" class="headerlink" title="CVS&amp;SVN：集中式版本控制工具"></a>CVS&amp;SVN：集中式版本控制工具</h3><ul>
+<li>CVS<ul>
+<li>诞生于1985年，有史以来第一个被大规模使用的版本控制工具</li>
+<li>CVS的出现让工程师可以协同工作</li>
+<li>缺点：不支持原子化提交，会导致客户端向服务器端提交不完整的数据、网络传输效率低</li>
+</ul>
+</li>
+<li>SVN：<ul>
+<li>优化了服务器上内容的存储，实现了原子提交等</li>
+<li>缺点：网络延迟高</li>
+</ul>
+</li>
+</ul>
+<p>​    <strong>集中式版本控制存在的问题：</strong></p>
+<ol>
+<li>狭窄的提交通道<ol>
+<li>排队提交，不能同时修改。提交缺乏质量控制</li>
+<li>缺乏代码门禁，在本地代码提交到服务器之间缺乏检查保护</li>
+</ol>
+</li>
+<li>数据安全性差<ol>
+<li>单点故障</li>
+<li>黑客攻击</li>
+</ol>
+</li>
+</ol>
+<h3 id="Git：Linus的第二个伟大作品"><a href="#Git：Linus的第二个伟大作品" class="headerlink" title="Git：Linus的第二个伟大作品"></a>Git：Linus的第二个伟大作品</h3><h4 id="记录差异-or-记录快照？"><a href="#记录差异-or-记录快照？" class="headerlink" title="记录差异 or 记录快照？"></a>记录差异 or 记录快照？</h4><ul>
+<li><p>Git和其他版本控制工具的主要差别在于<strong>Git对待数据的方法</strong></p>
+</li>
+<li><p>其他大部分系统以文件变更列表的方式存储信息</p>
+</li>
+<li><p>Git更像是把数据看作是对小型文件系统的一组快照</p>
+</li>
+<li><p>每次提交更新，或在Git中保存项目状态时，它主要对当时的全部文件制作一个快照并保存这个快照的索引</p>
+</li>
+<li><p>为了高效，如果文件没有修改，Git不再重新存储该文件，而是只保留一个链接指向之前存储的文件。Git对待数据更像一个快照流</p>
+</li>
+</ul>
+<h4 id="Git属性"><a href="#Git属性" class="headerlink" title="Git属性"></a>Git属性</h4><ul>
+<li>极快的速速</li>
+<li>简单的设计</li>
+<li>对非线性开发模式的强力支持</li>
+<li>完全分布式</li>
+<li>有能力高效管理类似Linux内核一样的超大规模项目（速度和数据量）</li>
+</ul>
+<hr>
+<h3 id="Linux下安装Git"><a href="#Linux下安装Git" class="headerlink" title="Linux下安装Git"></a>Linux下安装Git</h3><p><strong>包管理器安装方式</strong></p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">//Ubuntu, Debian<br>sudo apt install git<br>sudo apt install git-doc git-svn git-email gitk<br>//RHEL, Fedora, CentOS<br>yum install git<br>yum install git-svn git-email gitk<br></code></pre></div></td></tr></table></figure>
+
+<h3 id="Git基本配置"><a href="#Git基本配置" class="headerlink" title="Git基本配置"></a>Git基本配置</h3><p>Git有三种配置，分别以文件的形式放在三个不同的位置</p>
+<p>可以使用git config工具查看命令</p>
+<p><strong>系统配置</strong>（对所有用户都适用）</p>
+<p>存在在git的安装目录下： %git%/etc/gitconfig</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --system core.autocrlf<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>用户配置</strong>（只对当前用户适用）</p>
+<p>存放在用户目录下。Linux下是:~/.gitconfig</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --global user.name<br></code></pre></div></td></tr></table></figure>
+
+<p><strong>仓库配置</strong>（只对当前项目有效）</p>
+<p>当前仓库的配置文件（也就是工作目录中的.git/config文件）</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --<span class="hljs-built_in">local</span> remote.origin.url<br></code></pre></div></td></tr></table></figure>
+
+<p><em>注：每一个级别的配置都会覆盖上层的相同配置</em></p>
+<h4 id="配置个人身份"><a href="#配置个人身份" class="headerlink" title="配置个人身份"></a>配置个人身份</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git config --global user.name <span class="hljs-string">&quot;Tony&quot;</span><br>git config --global user.email Tony@123.com<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="文本换行符"><a href="#文本换行符" class="headerlink" title="文本换行符"></a>文本换行符</h4><p>Windows和Linux混合使用时可能会遇到结束符问题。</p>
+<p>因为：Windows使用回车和换行两个字符来结束一行；而Mac和Linux只使用换行一个字符。</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">//windows<br>git config --global core.autocrlf <span class="hljs-literal">true</span><br>//Linux Mac<br>git config --global core.autocrlf input<br>// 只有window的情况下<br>git config --global core.autocrlf <span class="hljs-literal">false</span><br></code></pre></div></td></tr></table></figure>
+
+<h4 id="与服务器认证配置"><a href="#与服务器认证配置" class="headerlink" title="与服务器认证配置"></a>与服务器认证配置</h4><p>常用两种协议认证方式：</p>
+<ul>
+<li>http / https 协议认证</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">设置口令缓存<br>git config --global credential.helper store<br>添加HTTPS证书认证<br>git config http.sslverify <span class="hljs-literal">false</span><br></code></pre></div></td></tr></table></figure>
+
+<ul>
+<li><p>ssh协议认证</p>
+<p>通过共钥认证</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs angelscript">生成公钥<br>ssh-keygen -t rsa -C <span class="hljs-symbol">Tony@</span><span class="hljs-number">163.</span>com<br></code></pre></div></td></tr></table></figure></li>
+</ul>
+<hr>
+<h3 id="Git版本控制三种工程区域-amp-文件状态"><a href="#Git版本控制三种工程区域-amp-文件状态" class="headerlink" title="Git版本控制三种工程区域&amp;文件状态"></a>Git版本控制三种工程区域&amp;文件状态</h3><p><strong>三种区域：</strong></p>
+<ul>
+<li>版本库：工作区中隐藏的.git，是Git的版本库，存放Git用来管理该工程的所有版本信息，又称本地仓库</li>
+<li>工作区：日常工作的代码文件或文档所在文件夹</li>
+<li>暂存区：一般存放在工程根目录.git/index中，暂存区又称索引</li>
+</ul>
+<p><strong>文件三种状态：</strong></p>
+<ul>
+<li>已提交（committed）：该文件以及被安全地保存在本地数据库中</li>
+<li>已修改（modified）：修改了某个文件，但还没有提交保存</li>
+<li>已暂存（staged）：把已修改的文件放在下次提交时要保存的清单中</li>
+</ul>
+<hr>
+<h3 id="Git常用命令"><a href="#Git常用命令" class="headerlink" title="Git常用命令"></a>Git常用命令</h3><p><img src="/2022/03/25/%E7%89%88%E6%9C%AC%E6%8E%A7%E5%88%B6/1.png" srcset="/img/loading.gif" lazyload></p>
+<h4 id="工程准备"><a href="#工程准备" class="headerlink" title="工程准备"></a>工程准备</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">新建<br>git init tonyProject<br><br>克隆<br>git <span class="hljs-built_in">clone</span> git@xxx.git<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="新增、减文件"><a href="#新增、减文件" class="headerlink" title="新增、减文件"></a>新增、减文件</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">新增文件<br>git add tony.txt<br><br>删除文件，不在纳入git管理<br>git rm tony.txt<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h4><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">移动<br>git mv tony.txt foldName<br>重命名<br>git mv tony1.txt tony2.txt<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="查看工作区"><a href="#查看工作区" class="headerlink" title="查看工作区"></a>查看工作区</h4><p>git diff 用于比较两个版本（分支）的差异</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">比较两个节点之间的差异<br>git diff a b<br><br>比较分支之间的差异<br>git diff master<br><br>比较当前索引和上次提交之间的差异<br>git diff --cached<br><br>在diff后面加--name-status参数，只看文件列表<br>git diff master --name-status<br></code></pre></div></td></tr></table></figure>
+
+<p>git status 用于显示工作目录和暂存区的状态</p>
+<h4 id="提交文件"><a href="#提交文件" class="headerlink" title="提交文件"></a>提交文件</h4><p>git commit主要是将暂存区文件提交到本地的版本库</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">提交文件并附上备注信息（m：message）<br>git commit file_nem -m <span class="hljs-string">&quot;commit message&quot;</span><br><br>批量提交，将所有暂存区改动的文件到版本库<br>git commit -am <span class="hljs-string">&quot;commit message&quot;</span><br><br>进入vim对提交信息进行修改<br>git commit --amend<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="查看历史"><a href="#查看历史" class="headerlink" title="查看历史"></a>查看历史</h4><p>git log用于查看提交历史</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git <span class="hljs-built_in">log</span><br>git <span class="hljs-built_in">log</span> --name-status<br></code></pre></div></td></tr></table></figure>
+
+
+
+<h4 id="推送到远端仓库"><a href="#推送到远端仓库" class="headerlink" title="推送到远端仓库"></a>推送到远端仓库</h4><p>git push将本地版本库推送到远程服务器</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git push origin branch_name<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="分支管理"><a href="#分支管理" class="headerlink" title="分支管理"></a>分支管理</h4><p>git branch查看本地工程的所有git分支名称</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">查看本地分支<br>git branch<br><br>查看远端分支<br>git branch -r<br><br>同时查看远端和本地分支<br>git branch -a<br><br>新建分支<br>git branch \ git checkout -b<br>区别：后者会新建并自动切换到新分支<br><br>删除分支<br>git branch -d<br>git branch -D 强制删除<br><br>切换分支<br>git checkout branchName<br>gir checkout -f 强制切换<br><br>获取分支更新<br>git pull<br>git fetch<br>区别：pull会获取并merge、fetch不会自动merge<br></code></pre></div></td></tr></table></figure>
+
+<h4 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h4><p>git merge</p>
+<p>git merge</p>
+<h4 id="撤销操作"><a href="#撤销操作" class="headerlink" title="撤销操作"></a>撤销操作</h4><p>git reset 可将工作区内容会推倒历史提交节点</p>
+<figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">git reset commit_id<br><br>git checkout . 用于回退本地所有修改而未提交的文件内容（！！！慎用）<br><br>小范围撤销<br>git checkout -filename<br></code></pre></div></td></tr></table></figure>
+
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/%E9%9B%8F%E9%B9%B0%E8%AE%A1%E5%88%92/">雏鹰计划</a>
+                    
+                      <a class="hover-with-bg" href="/tags/Git/">Git</a>
+                    
+                  </div>
+                
+              </div>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/01/22/Latex-%E8%AF%AD%E6%B3%95/">
+                        <span class="hidden-mobile">Latex 语法</span>
+                        <span class="visible-mobile">Next</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+              <!-- Comments -->
+              <article class="comments" id="comments" lazyload>
+                
+                  
+                
+                
+  <div id="valine"></div>
+  <script type="text/javascript">
+    Fluid.utils.loadComments('#valine', function() {
+      Fluid.utils.createScript('https://cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js', function() {
+        var options = Object.assign(
+          {"appId":"NqfCe9N1ldsKnFmEvujkDdSk-MdYXbMMI","appKey":"B34Gii3HEWEBa3njgz1wmchx","path":"window.location.pathname","placeholder":"来说哈子","avatar":"retro","meta":["nick"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":false,"serverURLs":"","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
+          {
+            el: "#valine",
+            path: window.location.pathname
+          }
+        )
+        new Valine(options);
+        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
+          Fluid.plugins.initFancyBox('#valine .vcontent img:not(.vemoji)');
+        })
+      });
+    });
+  </script>
+  <noscript>Please enable JavaScript to view the comments</noscript>
+
+
+              </article>
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Toc</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">Keyword</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://wtling.github.io" target="_blank" rel="nofollow noopener"><span>哈哈哈</span></a> <i class="iconfont icon-love"></i> <a href="https://wtling.github.io" target="_blank" rel="nofollow noopener"><span>哈哈哈</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+      typing(title)
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+  
+
+  
+    <!-- MathJax -->
+    <script>
+      MathJax = {
+        tex: {
+          inlineMath: [['$', '$'], ['\\(', '\\)']]
+        },
+        loader: {
+          load: ['ui/lazy']
+        },
+        options: {
+          renderActions: {
+            findScript: [10, doc => {
+              document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+                const display = !!node.type.match(/; *mode=display/);
+                const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+                const text = document.createTextNode('');
+                node.parentNode.replaceChild(text, node);
+                math.start = { node: text, delim: '', n: 0 };
+                math.end = { node: text, delim: '', n: 0 };
+                doc.math.push(math);
+              });
+            }, '', false],
+            insertedScript: [200, () => {
+              document.querySelectorAll('mjx-container').forEach(node => {
+                let target = node.parentNode;
+                if (target.nodeName.toLowerCase() === 'li') {
+                  target.parentNode.classList.add('has-jax');
+                }
+              });
+            }, '', false]
+          }
+        }
+      };
+    </script>
+
+    <script async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" ></script>
+
+  
+
+
+
+
+
+
+
+
+  
+    <!-- Baidu Analytics -->
+    <script defer>
+      var _hmt = _hmt || [];
+      (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d311059c1b774ee7657bb02e7ecfd0fb";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+      })();
+    </script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
