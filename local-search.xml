@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>VPS服务器搭建VPN</title>
+    <link href="/2022/08/06/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAVPN/"/>
+    <url>/2022/08/06/VPS%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%90%AD%E5%BB%BAVPN/</url>
+    
+    <content type="html"><![CDATA[<h2 id="VPS服务器选择"><a href="#VPS服务器选择" class="headerlink" title="VPS服务器选择"></a>VPS服务器选择</h2><p><a href="https://clients.hostwinds.com/clientarea.php">hostwinds</a></p><h2 id="开启VPN功能"><a href="#开启VPN功能" class="headerlink" title="开启VPN功能"></a>开启VPN功能</h2><p>ssh连接服务器</p><p><strong>脚本1</strong></p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">wget -N --no-check-certificate https://raw.githubusercontent.com/ToyoDAdoubi/doubi/master/ssr.sh<br>chmod +x ssr.sh <br>bash ssr.sh<br></code></pre></div></td></tr></table></figure><p><strong>脚本2</strong></p><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">wget --no-check-certificate https://raw.githubusercontent.com/teddysun/shadowsocks_install/master/shadowsocksR.sh<br>chmod +x shadowsocksR.sh<br>./shadowsocksR.sh 2&gt;&amp;1 | tee shadowsocksR.log<br></code></pre></div></td></tr></table></figure><h2 id="网络加速安装"><a href="#网络加速安装" class="headerlink" title="网络加速安装"></a>网络加速安装</h2><figure class="highlight bash"><table><tr><td class="gutter hljs"><div class="hljs code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></div></td><td class="code"><div class="hljs code-wrapper"><pre><code class="hljs bash">wget -N --no-check-certificate <span class="hljs-string">&quot;https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh&quot;</span><br>chmod +x tcp.sh<br>bash tcp.sh<br></code></pre></div></td></tr></table></figure>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Weibo爬虫</title>
     <link href="/2022/05/25/Weibo%E7%88%AC%E8%99%AB/"/>
     <url>/2022/05/25/Weibo%E7%88%AC%E8%99%AB/</url>
